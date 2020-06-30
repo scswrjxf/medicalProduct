@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+	<!-- 根据账户密码查找账户 -->
+	<select id="findUserByIdAndPsw" resultType="User">
+		select * from user where userId=#{userId} and userPsw=#{userPsw}
+	</select>
+	<!-- 根据 userId 查找 User -->
+	<select id="findUserById" resultType="User">
+		select * from user where userId=#{userId}
+	</select>
+	<!-- 根据 role 查找User -->
+	<select id="findUsersByRole" resultType="User">
+		select * from user where role=#{role}
+	</select>
+	<!-- 添加新账户信息 -->
+	<insert id="addNewUser" parameterType="User">
+	insert into user values(#{userId},#{userPsw},#{userAlice},#{userEmail},
+			#{userSex},#{role},#{userCreateDate})
+		<!-- insert into user(userId,userPsw,userAlice,userEmail,
+			userSex,role,userCreateDate)
+			values(#{userId},#{userPsw},#{userAlice},#{userEmail},
+			#{userSex},#{role},#{userCreateDate}) -->
+	</insert>
+</mapper>
