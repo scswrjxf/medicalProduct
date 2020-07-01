@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>登录</title>
+<title>重置密码</title>
 
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
@@ -70,69 +70,50 @@
 						<article class="col-main">
 							<div class="account-login">
 								<div class="page-title">
-									<h2>登录或者创建一个帐户</h2>
+									<h2>重置密码</h2>
 								</div>
-								<fieldset class="col2-set">
-									<div class="col-1 new-users">
-										<strong>新用户</strong>
-										<div class="content">
-											<p>通过在我们的系统中创建帐户，您将能够更快地完成结帐流程，存储多个送货地址，查看和跟踪帐户中的订单等等。</p>
-											<div class="buttons-set">
-												<button
-													onclick="window.location='${pageContext.request.contextPath}/regist';"
-													class="button create-account" type="button">
-													<span>创建一个新账户</span>
-												</button>
-											</div>
-										</div>
-									</div>
+								<fieldset class="col2-set"> 
 									<div class="col-2 registered-users">
-										<strong>登录账户</strong>
+										<strong>忘记密码</strong>
 										<div class="content">
-											<p>如果您拥有我们的帐户，请登录。</p>
-											<form:form action="${pageContext.request.contextPath}/login" cssClass="form" modelAttribute="user">
-												<fieldset>
+											<p>在我们的系统中已经了创建帐户，但是忘记了密码。</p> 
+											<form action="${pageContext.request.contextPath}/user_reset_password" class="form" method="post">
+											 	<fieldset>
+											 		<p style="color: red">${error }</p>  
 													<div class="form-list">
-														<form:label path="userId">账户<span
-																class="required">*</span>
-														</form:label>
+														<label for="userId">账户</label>
 														<div class="loginInput">
-															<form:input path="userId" type="text" title="userId"
-																class="input-text required-entry" id="userId" value=""
-																name="login[userId]" />
-															<br>
-															<form:errors path="userId" cssStyle="color:red;"/>
+															<input type="text" class="input-text required-entry" id="userId" name="userId" /> 
 														</div>
 														<div class="clear"></div>
 													</div>
 													<div class="form-list">
-														<form:label path="userPsw">密码<span
-																class="required">*</span>
-														</form:label>
-														<div class="loginInput">
-															<form:password path="userPsw" title="userPsw" id="pass"
-																class="input-text required-entry validate-password"
-																value="userPsw" name="login[userPsw]" />
-															<br>
-															<form:errors path="userPsw" cssStyle="color:red;" />
-														</div>
-														<div class="clear"></div>
-													</div>
-													<p class="required">* 必填项</p>
+								                   	   <label for="yzm">验证码</label>
+								                       <div class="formRight">
+								                       	<div class="oneTwo"><input type="text" id="yzm" name="yzm" title="yzm"
+																class="input-text required-entry" /></div>
+								                       	<div class="oneTwo">
+								                       		<img id="codeImg" style="height:30px;" src="${pageContext.request.contextPath}/code_img"/>
+								                       		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:changeImg();" rel="external nofollow">看不清</a>
+								                       	</div>
+								                       </div>
+								                       <div class="clear"></div>
+								                   </div>  
 													<div class="buttons-set">
-														<form:button path="send2" id="send2" name="send" type="submit" class="button login">
-															<span>登录</span>
-														</form:button>
+														<br>
+														<button id="send2" name="send" type="submit"  value="重置密码" class="button login">
+															<span>重置密码</span> 
+														</button>
 														<a class="forgot-word"
-															href="${pageContext.request.contextPath}/user_reset_password">忘记密码?</a>
-														<div class="clear"></div>
+															href="${pageContext.request.contextPath}/login">重置密码成功，去登录?</a>
+														<div class="clear"></div> 
 													</div>
 												</fieldset>
-											</form:form>
+											</form>
 										</div>
-									</div>
+									</div> 
 								</fieldset>
-							</div>
+							</div> 
 						</article>
 						<!--	///*///======    End article  ========= //*/// -->
 					</div>
@@ -151,8 +132,14 @@
 	<%@ include file="common/mobile_menu.jsp"%>
 
 	<!-- End Footer -->
-
-	<!-- JavaScript -->
+<script>
+   function changeImg(){
+     var img = document.getElementById("codeImg");
+     img.src="${pageContext.request.contextPath}/code_img?"+new Date().getTime();
+   }
+ </script>
+	<!-- JavaScript --> 
+	<script src="${pageContext.request.contextPath}/statics/js/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"

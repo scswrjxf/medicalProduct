@@ -31,5 +31,12 @@ public class UserServiceImpl implements UserService {
 		user.setUserPsw(DigestUtils.md5Hex(user.getUserPsw()));
 		return userMapper.addNewUser(user);
 	}
+	// 根据 userId 修改 userPsw 
+	@Override
+	public int updateUserPswById(User user) {
+		// 加密密码
+		user.setUserPsw(DigestUtils.md5Hex(user.getUserPsw()));
+		return userMapper.updateUserPswById(user);
+	}
 
 }

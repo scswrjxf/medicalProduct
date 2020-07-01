@@ -10,18 +10,14 @@
 	<!-- 根据 userId 查找 User -->
 	<select id="findUserById" resultType="User">
 		select * from user where userId=#{userId}
-	</select>
-	<!-- 根据 role 查找User -->
-	<select id="findUsersByRole" resultType="User">
-		select * from user where role=#{role}
-	</select>
+	</select> 
 	<!-- 添加新账户信息 -->
 	<insert id="addNewUser" parameterType="User">
-	insert into user values(#{userId},#{userPsw},#{userAlice},#{userEmail},
-			#{userSex},#{role},#{userCreateDate})
-		<!-- insert into user(userId,userPsw,userAlice,userEmail,
-			userSex,role,userCreateDate)
-			values(#{userId},#{userPsw},#{userAlice},#{userEmail},
-			#{userSex},#{role},#{userCreateDate}) -->
+		insert into user(userId,userPsw,userAlice,userEmail,userSex,userCreateDate)
+		values(#{userId},#{userPsw},#{userAlice},#{userEmail},#{userSex},#{userCreateDate})
 	</insert>
+	<!-- 通过 userId 修改 userPsw -->
+	<update id="updateUserPswById" parameterType="User">
+		update user set userPsw=#{userPsw} where userId=#{userId}
+	</update>
 </mapper>

@@ -10,4 +10,6 @@ public interface UserMapper {
 	User findUserById(String userId);
 	
 	int addNewUser(User user);
+	
+	int updateUserPswById(User user);
 }

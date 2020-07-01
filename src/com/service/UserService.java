@@ -8,4 +8,6 @@ public interface UserService {
 	User findUserById(String userId);
 
 	int addNewUser(User user);
+
+	int updateUserPswById(User user);
 }
