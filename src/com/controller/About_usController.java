@@ -21,7 +21,7 @@ public class About_usController {
 			Connection conn = null;
 			PreparedStatement ps = null;
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicalproduct?useUnicode=true&characterEncoding=utf-8","root","200031");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medicalproduct?useUnicode=true&characterEncoding=utf-8","root","00000");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
