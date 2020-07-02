@@ -164,7 +164,7 @@
                     <div class="dropdown-menu wrap-popup column1">
                       <div class="popup">
                         <ul class="nav">
-                          <li><a href="index.jsp">Home Version 1</a></li>
+                          <li><a href="${pageContext.request.contextPath}/index">Home Version 1</a></li>
                           <li><a href="../home2/index.jsp">Home Version 2</a></li>
                         </ul>
                       </div>
@@ -176,35 +176,35 @@
                         <div class="row">
                           <div class="col-sm-4">
                             <ul class="nav">
-                              <li><a href="grid.jsp"><span>Products Grid</span></a> </li>
-                              <li> <a href="list.jsp"> <span>Products List</span> </a> </li>
-                              <li> <a href="product_detail.jsp"> <span>Product Detail</span> </a> </li>
-                              <li> <a href="shopping_cart.jsp"> <span>Shopping Cart</span> </a> </li>
-                              <li><a href="checkout.jsp"><span>Checkout</span></a> </li>
-                              <li> <a href="wishlist.jsp"> <span>Wishlist</span> </a> </li>
+                              <li><a href="${pageContext.request.contextPath}/grid"><span>Products Grid</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/list"> <span>Products List</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/product_detail"> <span>Product Detail</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/shopping_cart"> <span>Shopping Cart</span> </a> </li>
+                              <li><a href="${pageContext.request.contextPath}/checkout"><span>Checkout</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/wishlist"> <span>Wishlist</span> </a> </li>
                               
                               
                             </ul>
                           </div>
                           <div class="col-sm-4">
                             <ul class="nav">
-                              <li> <a href="faq.jsp"> <span>FAQ</span> </a> </li>
-                              <li> <a href="login.jsp"> <span>Login</span> </a> </li>
-                                <li> <a href="dashboard.jsp"> <span>Dashboard</span> </a> </li>
-                              <li> <a href="multiple_addresses.jsp"> <span>Multiple Addresses</span> </a> </li>
-                              <li><a href="compare.jsp"><span>Compare</span></a> </li>
-                              <li> <a href="contact_us.jsp"> <span>Contact</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/faq"> <span>FAQ</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/login"> <span>Login</span> </a> </li>
+                                <li> <a href="${pageContext.request.contextPath}/dashboard"> <span>Dashboard</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/multiple_addresses"> <span>Multiple Addresses</span> </a> </li>
+                              <li><a href="${pageContext.request.contextPath}/compare"><span>Compare</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/contact_us"> <span>Contact</span> </a> </li>
                               
                             </ul>
                           </div>
                           <div class="col-sm-4 has-sep">
                             <ul class="nav">
-                              <li> <a href="about_us.jsp"> <span>About Us</span> </a> </li>
-                              <li><a href="quick_view.jsp"><span>Quick View</span></a> </li>
-                              <li><a href="newsletter.jsp"><span>Newsletter</span></a> </li>
-                              <li><a href="404error.jsp"><span>404 Error Page</span></a> </li>
-                              <li> <a href="Blog.jsp"> <span>Blog</span> </a> </li>
-                              <li> <a href="blog_single_post.jsp"> <span>Blog Detail</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/about_us"> <span>About Us</span> </a> </li>
+                              <li><a href="${pageContext.request.contextPath}/quick_view"><span>Quick View</span></a> </li>
+                              <li><a href="${pageContext.request.contextPath}/newsletter"><span>Newsletter</span></a> </li>
+                              <li><a href="${pageContext.request.contextPath}/404error"><span>404 Error Page</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/Blog"> <span>Blog</span> </a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/blog_single_post"> <span>Blog Detail</span> </a> </li>
                             </ul>
                           </div>
                         </div>
@@ -218,39 +218,39 @@
                           <div class="col-md-4 col-sm-6">
                             <h3>Skin Care</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp"><span>Body Cream</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Body Cream</span></a> </li>
                               <!--level2 nav-6-1-1-->
-                              <li> <a href="grid.jsp"><span>Powders</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Powders</span></a> </li>
                               <!--level2 nav-6-1-1-->
-                              <li> <a href="grid.jsp"><span>Face Cream</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Face Cream</span></a> </li>
                               <!--level2 nav-6-1-1-->
-                              <li> <a href="grid.jsp"><span>Face Wash</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Face Wash</span></a> </li>
                               <!--level2 nav-6-1-1-->
                             </ul>
                             <br>
                             <h3>Hair Care</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp">Shampoos</a> </li>
-                              <li> <a href="grid.jsp">Conditioners</a> </li>
-                              <li> <a href="grid.jsp">Herbals</a> </li>
-                              <li> <a href="grid.jsp">Oils & Treatments</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Shampoos</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Conditioners</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Herbals</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Oils & Treatments</a> </li>
                             </ul>
                           </div>
                           <div class="col-md-4 col-sm-6 has-sep">
                             <h3>Oral Care</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp">Mouth Wash</a> </li>
-                              <li> <a href="grid.jsp">Tooth Aids</a> </li>
-                              <li> <a href="grid.jsp">Tooth Paste</a> </li>
-                              <li> <a href="grid.jsp">Antiseptic Gel</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Mouth Wash</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Tooth Aids</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Tooth Paste</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Antiseptic Gel</a> </li>
                             </ul>
                             <br>
                             <h3>Sanitary & Hygiene</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp">Sanitary Napkins</a> </li>
-                              <li> <a href="grid.jsp">Feminine Aids</a> </li>
-                              <li> <a href="grid.jsp">Hand Wash</a> </li>
-                              <li> <a href="grid.jsp">Sanitizers</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Sanitary Napkins</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Feminine Aids</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Hand Wash</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Sanitizers</a> </li>
                             </ul>
                           </div>
                           <div class="col-md-4 has-sep hidden-sm">
@@ -271,35 +271,35 @@
                           <div class="col-md-4 col-sm-6">
                             <h3>Health Drinks</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp">Children</a> </li>
-                              <li> <a href="grid.jsp">Diabetic Drinks</a> </li>
-                              <li> <a href="grid.jsp">Glucose Powder</a> </li>
-                              <li> <a href="grid.jsp">Men & Women</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Children</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Diabetic Drinks</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Glucose Powder</a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid">Men & Women</a> </li>
                             </ul>
                             <br>
                             <h3>Nutritional Foods</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp"><span>Chywanprash</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Energy Drinks</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Honey</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Herbal Foods</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Chywanprash</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Energy Drinks</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Honey</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Herbal Foods</span></a> </li>
                             </ul>
                           </div>
                           <div class="col-md-4 col-sm-6 has-sep">
                             <h3>Breakfast Cereals</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp"><span>Cereal Basics</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Sugar & Carbs</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Misleading Claims</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Better Breakfasts</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Cereal Basics</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Sugar & Carbs</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Misleading Claims</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Better Breakfasts</span></a> </li>
                             </ul>
                             <br>
                             <h3>Weight Management</h3>
                             <ul class="nav">
-                              <li> <a href="grid.jsp"><span>Weight Gain Diet</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Weight Loss Diet</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Atkins Diet</span></a> </li>
-                              <li> <a href="grid.jsp"><span>Low Carbs Diet</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Weight Gain Diet</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Weight Loss Diet</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Atkins Diet</span></a> </li>
+                              <li> <a href="${pageContext.request.contextPath}/grid"><span>Low Carbs Diet</span></a> </li>
                             </ul>
                           </div>
                           <div class="col-md-4 has-sep hidden-sm">
@@ -323,10 +323,10 @@
                     <div class="dropdown-menu wrap-popup column1">
                       <div class="popup">
                         <ul class="nav">
-                          <li><a href="grid.jsp">Thermometers</a></li>
-                          <li><a href="grid.jsp">Electric Massagers</a></li>
-                          <li><a href="grid.jsp">Allergy</a></li>
-                          <li><a href="grid.jsp">Sinus & Asthma</a></li>
+                          <li><a href="${pageContext.request.contextPath}/grid">Thermometers</a></li>
+                          <li><a href="${pageContext.request.contextPath}/grid">Electric Massagers</a></li>
+                          <li><a href="${pageContext.request.contextPath}/grid">Allergy</a></li>
+                          <li><a href="${pageContext.request.contextPath}/grid">Sinus & Asthma</a></li>
                         </ul>
                       </div>
                     </div>
@@ -335,10 +335,10 @@
                     <div class="dropdown-menu wrap-popup column1">
                       <div class="popup">
                         <ul class="nav">
-                          <li> <a href="grid.jsp"> Sports Supplements </a> </li>
-                          <li> <a href="grid.jsp"> Herbal Supplements</a> </li>
-                          <li> <a href="grid.jsp"> Vitamins & Minerals </a> </li>
-                          <li> <a href="grid.jsp"> Jamieson </a> </li>
+                          <li> <a href="${pageContext.request.contextPath}/grid"> Sports Supplements </a> </li>
+                          <li> <a href="${pageContext.request.contextPath}/grid"> Herbal Supplements</a> </li>
+                          <li> <a href="${pageContext.request.contextPath}/grid"> Vitamins & Minerals </a> </li>
+                          <li> <a href="${pageContext.request.contextPath}/grid"> Jamieson </a> </li>
                         </ul>
                       </div>
                     </div>
