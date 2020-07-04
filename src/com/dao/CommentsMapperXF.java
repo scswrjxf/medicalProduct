@@ -13,5 +13,7 @@ public interface CommentsMapperXF {
 	Comment findCommentById(Integer commentId);
 
 	int commentIspassById(@Param("commentId") Integer commentId,
-			@Param("commentIspass") Integer commentIspass);  
+			@Param("commentIspass") Integer commentIspass);
+
+	List<Comment> findAllCommentsByGoodsName(String goodsName);  
 }

@@ -39,6 +39,26 @@ public class CommentsServiceImplXF implements CommentsServiceXF {
 	@Override
 	public int commentIspassById(Integer commentId, Integer commentIspass) {
 		return commentsMapperXF.commentIspassById(commentId,commentIspass);
+	}
+	
+	// 根据 goodsName 获取所有通过审核的评论
+	@Override
+	public List<Comment> findAllCommentsByGoodsName(String goodsName) {
+		List<Comment> comments=commentsMapperXF.findAllCommentsByGoodsName(goodsName);
+//		// 对评论内容进行解码处理(采用UTF-8编码格式)
+//		String meg = null;
+//		for(Comment com:comments) {
+//			try {
+//				// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
+//				meg = URLDecoder.decode(com.getCommentMessage(), "utf-8");
+//				// 屏蔽掉敏感内容
+//				meg = meg.replaceAll("(共产党)|(操)|()","*");
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			} 
+//			com.setCommentMessage(meg);
+//		}	
+		return comments;
 	}  
   
 }

@@ -12,4 +12,6 @@ public interface CommentsServiceXF {
 
 	int commentIspassById(Integer commentId, Integer commentIspass);
 
+	List<Comment> findAllCommentsByGoodsName(String goodsName);
+
 }

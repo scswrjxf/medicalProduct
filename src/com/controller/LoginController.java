@@ -34,6 +34,7 @@ import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.User;
 import com.service.CategoryService;
+import com.service.CommentsServiceXF;
 import com.service.GoodsServiceXF;
 import com.service.UserService;
 import com.sun.mail.util.MailSSLSocketFactory; 
@@ -47,6 +48,8 @@ public class LoginController{
 	private GoodsServiceXF goodsServiceXF;
 	@Resource
 	private CategoryService categoryService;
+	@Resource
+	private CommentsServiceXF commentsServiceXF;
 	// 访问 index 页面
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index() { 
@@ -245,6 +248,12 @@ public class LoginController{
 		// 根据 gid 获取商品信息
 		Goods good = goodsServiceXF.findGoodByGid(gid);
 		mv.addObject("goodInfor",good);
+		// 获取对应商品名称
+		String goodsName=good.getGoodsName();
+		// 根据 goodsName 获取所有通过审核的评论
+		List<Comment> commentsList=commentsServiceXF.
+				findAllCommentsByGoodsName(goodsName);
+		mv.addObject("commentsList",commentsList);
 		return mv;
 	}
 }

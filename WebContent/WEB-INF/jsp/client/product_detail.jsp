@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
-<meta name="author" content="">
-
+<meta name="author" content=""> 
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
@@ -51,9 +51,8 @@
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
+	rel="stylesheet"> 	
 </head>
-
 <body class="category-page">
 	<div id="page">
 		<!-- Header -->
@@ -245,8 +244,7 @@
 												data-toggle="tab">产品描述</a></li>
 											<li><a href="#reviews_tabs" data-toggle="tab">评论</a>
 											</li>
-											<li><a href="#product_tabs_custom" data-toggle="tab">Custom
-													Tab</a></li> 
+											<li><a href="#product_tabs_custom" data-toggle="tab">Custom Tab</a></li> 
 										</ul>
 										<div id="productTabContent" class="tab-content">
 											<div class="tab-pane fade in active"
@@ -259,93 +257,85 @@
 											</div>
 											<div class="tab-pane fade" id="reviews_tabs">
 												<div class="woocommerce-Reviews">
+													<!-- 获取该商品的所有评论 -->
 													<div>
 														<h2 class="woocommerce-Reviews-title"> ${goodInfor.goodsName}的所有评论 </h2>
 														<ol class="commentlist">
-														<!-- 获取该商品的所有评论 -->
-															<li class="comment">
-																<div>
-																	<img alt=""
-																		src="${pageContext.request.contextPath}/statics/images/member1.png"
-																		class="avatar avatar-60 photo">
-																	<div class="comment-text">
-																		<div class="ratings">
-																			<div class="rating-box">
-																				<div style="width: 100%" class="rating"></div>
+															<c:forEach var="comment" items="${commentsList }">
+																<li class="comment">
+																	<div>
+																		<img alt="" src="${pageContext.request.contextPath}/statics/images/${comment.uId.userPhoto}"
+																			class="avatar avatar-60 photo">
+																		<div class="comment-text">
+																			<div class="ratings">
+																				<div class="rating-box">
+																					<div style="width: 100%" class="rating"></div>
+																				</div>
+		
 																			</div>
-
-																		</div>
-																		<p class="meta">
-																			<strong>John Doe</strong> <span>–</span> April 19,
-																			2018
-																		</p>
-																		<div class="description">
-																			<p>Vivamus magna justo, lacinia eget consectetur
-																				sed, convallis at tellus. Nulla quis lorem ut libero
-																				malesuada feugiat. Proin eget tortor risus. Donec
-																				rutrum congue leo eget malesuada. Lorem ipsum dolor
-																				sit amet, consectetur adipiscing elit.</p>
-																			<p>Donec sollicitudin molestie malesuada. Vivamus
-																				suscipit tortor eget felis porttitor volutpat. Lorem
-																				ipsum dolor sit amet, consectetur adipiscing elit.
-																				Nulla quis lorem ut libero malesuada feugiat.
-																				Vivamus magna justo, lacinia eget consectetur sed,
-																				convallis at tellus.</p>
+																			<p class="meta">
+																				<strong>${comment.uId.userAlice}</strong> <span>&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${comment.commentDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></span>
+																			</p>
+																			<div class="description">
+																				<p>${comment.commentMessage}</p>
+																			</div>
 																		</div>
 																	</div>
-																</div>
-															</li>
-															<!-- #comment-## -->
+																</li> 
+															</c:forEach>
 														</ol>
 													</div>
+													
+													<!-- 添加评论 -->
 													<div>
 														<div>
 															<div class="comment-respond">
-																<span class="comment-reply-title">Add a review </span>
+																<span class="comment-reply-title">添加评论</span>
 																<form action="#" method="post" class="comment-form"
 																	novalidate>
 																	<p class="comment-notes">
-																		<span id="email-notes">Your email address will
-																			not be published.</span> Required fields are marked <span
+																		<span id="email-notes">您的电子邮件地址不会被公开。</span>必填字段已标记<span
 																			class="required">*</span>
 																	</p>
 																	<div class="comment-form-rating">
-																		<label id="rating">Your rating</label>
+																		<label id="rating">您的评分</label>
 																		<p class="stars">
-																			<span> <a class="star-1" href="#">1</a> <a
-																				class="star-2" href="#">2</a> <a class="star-3"
-																				href="#">3</a> <a class="star-4" href="#">4</a> <a
-																				class="star-5" href="#">5</a>
+																			<span>
+																				<a class="star-1" href="#">1</a> 
+																				<a class="star-2" href="#">2</a> 
+																				<a class="star-3" href="#">3</a>
+																				<a class="star-4" href="#">4</a> 
+																				<a class="star-5" href="#">5</a>
 																			</span>
 																		</p>
 																	</div>
-																	<p class="comment-form-comment">
-																		<label>Your review <span class="required">*</span></label>
-																		<textarea id="comment" name="comment" cols="45"
-																			rows="8" required></textarea>
-																	</p>
 																	<p class="comment-form-author">
-																		<label for="author">Name <span
+																		<label for="author">昵称 <span
 																			class="required">*</span></label> <input id="author"
 																			name="author" type="text" value="" size="30" required>
 																	</p>
 																	<p class="comment-form-email">
-																		<label for="email">Email <span
-																			class="required">*</span></label> <input id="email"
+																		<label for="email">邮箱 <span
+																			class="required">*</span></label> <input id="email" 
 																			name="email" type="email" value="" size="30" required>
 																	</p>
+																	<p class="comment-form-comment">
+																		<label>您的评论<span class="required">*</span></label> 
+																		<textarea id="comment" name="comment" cols="45" rows="8" required>
+																		</textarea> 
+																	</p> 	 
 																	<p class="form-submit">
 																		<input name="submit" type="submit" id="submit"
-																			class="submit" value="Submit">
+																			class="submit" value="提交">
 																	</p>
 																</form>
 															</div>
 															<!-- #respond -->
 														</div>
 													</div>
-													<div class="clear"></div>
 												</div>
 											</div>
+											<!-- 自定义标签 -->
 											<div class="tab-pane fade" id="product_tabs_custom">
 												<div class="product-tabs-content-inner clearfix">
 													<p>
@@ -364,38 +354,18 @@
 													</p>
 												</div>
 											</div>
-											<div class="tab-pane fade" id="product_tabs_custom1">
-												<div class="product-tabs-content-inner clearfix">
-													<p>
-														<strong> Comfortable </strong><span>&nbsp;preshrunk
-															shirts. Highest Quality Printing. 6.1 oz. 100% preshrunk
-															heavyweight cotton Shoulder-to-shoulder taping
-															Double-needle sleeves and bottom hem Lorem Ipsumis simply
-															dummy text of the printing and typesetting industry.
-															Lorem Ipsum has been the industry's standard dummy text
-															ever since the 1500s, when an unknown printer took a
-															galley of type and scrambled it to make a type specimen
-															book. It has survived not only five centuries, but also
-															the leap into electronic typesetting, remaining
-															essentially unchanged. It was popularised in the 1960s
-															with the release of Letraset sheets containing Lorem
-															Ipsum passages, and more recently with desktop publishing
-															software like Aldus PageMaker including versions of Lorem
-															Ipsum.</span>
-													</p>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
-
+								
+								<!-- 相关产品 -->
 								<!-- Related Slider -->
 								<div class="related-pro">
 									<div class="slider-items-products">
 										<div class="related-block">
 											<div class="home-block-inner">
 												<div class="block-title">
-													<h2>Related Products</h2>
+													<h2>相关产品</h2>
 												</div>
 											</div>
 											<div id="related-products-slider"
@@ -836,13 +806,14 @@
 
 								<!-- End related products Slider -->
 
+								<!-- 加售产品 -->
 								<!-- Upsell Product Slider -->
 								<div class="upsell-pro">
 									<div class="slider-items-products">
 										<div class="upsell-block">
 											<div class="home-block-inner">
 												<div class="block-title">
-													<h2>Upsell Product</h2>
+													<h2>加售产品</h2>
 												</div>
 											</div>
 											<div id="upsell-products-slider"
@@ -1299,20 +1270,23 @@
 	</div>
 	<!-- mobile-menu -->
 	<%@ include file="common/mobile_menu.jsp"%>
+
 	<!-- JavaScript -->
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/common.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/jquery.flexslider.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/statics/js/cloud-zoom.js"></script>
+	
+<script src="${pageContext.request.contextPath}/statics/js/wangEditor.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/common.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/jquery.flexslider.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/statics/js/cloud-zoom.js"></script>
 </body>
 </html>
