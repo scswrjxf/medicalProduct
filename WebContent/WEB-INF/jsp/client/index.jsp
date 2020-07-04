@@ -96,7 +96,7 @@
 														<div class="item-inner">
 															<div class="item-img">
 																<div class="item-img-info">
-																	<a class="product-image" href="product_detail.html">
+																	<a class="product-image" href="${pageContext.request.contextPath}/product_detail/${remai.gid}">
 																		<img alt=""
 																		src="${pageContext.request.contextPath}/statics/products-images/${remai.goodsPhoto}">
 																	</a>
@@ -116,7 +116,7 @@
 															<div class="item-info">
 																<div class="info-inner">
 																	<div class="item-title">
-																		<a href="product_detail.html">${remai.goodsName}</a>
+																		<a href="${pageContext.request.contextPath}/product_detail/${remai.gid}">${remai.goodsName}</a>
 																	</div>
 																	<div class="brand">Datsun</div>
 																	<div class="rating">
@@ -163,7 +163,7 @@
 													<div class="item-inner">
 														<div class="item-img">
 															<div class="item-img-info">
-																<a class="product-image" href="product_detail.html">
+																<a class="product-image" href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
 																	<img alt="" src="${pageContext.request.contextPath}/statics/products-images/${xinpin.goodsPhoto }">
 																</a>
 
@@ -182,9 +182,8 @@
 														<div class="item-info">
 															<div class="info-inner">
 																<div class="item-title">
-																	<a href="product_detail.html">${xinpin.goodsName }</a>
+																	<a href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">${xinpin.goodsName }</a>
 																</div>
-																<div class="brand">Impulse</div>
 																<div class="rating">
 																	<div class="ratings">
 																		<div class="rating-box">
@@ -230,7 +229,7 @@
 															<div class="item-img">
 																<div class="item-img-info">
 																	<a class="product-image" title="Retis lapen casen"
-																		href="product_detail.html"> <img alt=""
+																		href="${pageContext.request.contextPath}/product_detail/${tehui.gid }"> <img alt=""
 																		src="${pageContext.request.contextPath}/statics/products-images/${tehui.goodsPhoto}">
 																	</a>
 	
@@ -249,9 +248,8 @@
 															<div class="item-info">
 																<div class="info-inner">
 																	<div class="item-title">
-																		<a title="Retis lapen casen" href="product_detail.html">${tehui.goodsName }</a>
+																		<a title="Retis lapen casen" href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">${tehui.goodsName }</a>
 																	</div>
-																	<div class="brand">Cello</div>
 																	<div class="rating">
 																		<div class="ratings">
 																			<div class="rating-box">
@@ -299,21 +297,16 @@
 				<div class="row">
 					<div
 						class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-						<img
-							src="${pageContext.request.contextPath}/statics/images/watch.jpg"
-							alt="">
-
+						<img src="${pageContext.request.contextPath}/statics/images/watch.jpg" alt="">
 					</div>
-					<div
-						class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-						<img
-							src="${pageContext.request.contextPath}/statics/images/shoes-banner.jpg"
-							alt="">
-
+					<div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+						<img src="${pageContext.request.contextPath}/statics/images/shoes-banner.jpg" alt=""> 
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<!-- 当天交易 -->
 		<section class="deals-block">
 			<div class="container">
 				<div class="row">
@@ -327,7 +320,7 @@
 										<div class="item-info">
 											<div class="info-inner">
 												<div class="item-title">
-													<a href="product_detail.html" title="Retis lapen casen">Covmed
+													<a href="product_detail.jsp" title="Retis lapen casen">Covmed
 														60S Tablets for corona</a>
 												</div>
 												<div class="brand">Xperia</div>
@@ -464,6 +457,7 @@
 				</div>
 			</div>
 		</section>
+		
 		<!-- 最畅销 -->
 		<div class="container">
 			<div class="bestsell-pro">
@@ -482,7 +476,7 @@
 											<div class="item-img">
 												<div class="item-img-info">
 													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
+														href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }"> <img alt=""
 														src="${pageContext.request.contextPath}/statics/products-images/product12.jpg">
 													</a>
 													<div class="new-label new-top-left">new</div>

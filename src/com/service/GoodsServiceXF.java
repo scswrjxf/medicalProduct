@@ -13,4 +13,6 @@ public interface GoodsServiceXF {
 	List<Goods> findGoodsByXinPin();
 
 	List<Goods> findGoodsByTeHui();
+
+	Goods findGoodByGid(Integer gid);
 }

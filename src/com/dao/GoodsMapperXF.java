@@ -11,5 +11,7 @@ public interface GoodsMapperXF {
 
 	List<Goods> findGoodsByXinPin();
 
-	List<Goods> findGoodsByTeHui();  
+	List<Goods> findGoodsByTeHui();
+
+	Goods findGoodByGid(Integer gid);  
 }

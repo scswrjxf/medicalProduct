@@ -34,4 +34,10 @@
 		goods.categoryId=category.categoryId
 		order by goodsPrice limit 4
 	</select>
+	<!-- 根据 gid 获取商品信息 -->
+	<select id="findGoodByGid" parameterType="Integer" resultMap="goodsMap">
+		select  goods.*,category.categoryId,category 
+		from goods left join category on 
+		goods.categoryId=category.categoryId where gid=${gid}
+	</select>
 </mapper>

@@ -23,12 +23,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mysql.jdbc.StringUtils;
 import com.pojo.Category;
+import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.User;
 import com.service.CategoryService;
@@ -234,5 +236,15 @@ public class LoginController{
 		session.removeAttribute("loginer");
 		return "redirect:/index";
 	}  
-
+	
+	// 访问 product_detail 页面
+	@RequestMapping(value="/product_detail/{gid}",method=RequestMethod.GET)
+	public ModelAndView gotoproduct_detail(@PathVariable Integer gid) { 
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("client/product_detail");
+		// 根据 gid 获取商品信息
+		Goods good = goodsServiceXF.findGoodByGid(gid);
+		mv.addObject("goodInfor",good);
+		return mv;
+	}
 }

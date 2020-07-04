@@ -32,4 +32,10 @@ public class GoodsServiceImplXF implements GoodsServiceXF {
 	public List<Goods> findGoodsByTeHui() {
 		return goodsMapperXF.findGoodsByTeHui();
 	}
+
+	// 根据 gid 获取商品信息
+	@Override
+	public Goods findGoodByGid(Integer gid) {
+		return goodsMapperXF.findGoodByGid(gid);
+	}
 }
