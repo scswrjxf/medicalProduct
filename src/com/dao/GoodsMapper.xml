@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.GoodsMapper"> 
+	<!-- 查询所有的商品信息 -->
+	<select id="findAllGoods" resultType="Goods">
+		select * from Goods
+	</select>
+	<resultMap type="Goods" id="goodsMap">
+		<id property="gid" column="gid"/>
+		<association property="categoryId" javaType="Category">
+			<id property="categoryId" column="categoryId"/>
+		</association>
+	</resultMap>
+	<!-- 获取分类商品 -->
+	<select id="findCategoryGoods" resultMap="goodsMap">
+		select goods.*,category.categoryId,category from goods
+			left join category on goods.categoryId=category.categoryId 
+			where goods.categoryId=#{categoryId}
+	</select> 
+	<!-- 获取所有商品 -->
+	<!-- 
+	<select id="findAllGoods" resultMap="goodsMap">
+		select goods.*,category.categoryId,category from goods
+			left join category on goods.categoryId=category.categoryId 
+	</select>
+	 -->
+</mapper>

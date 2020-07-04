@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.GoodsMapperXF"> 
+	<resultMap type="Goods" id="goodsMap">
+		<id property="gid" column="gid"/>
+		<association property="categoryId" javaType="Category">
+			<id property="categoryId" column="categoryId"/>
+		</association>
+	</resultMap>
+	<!-- 查询所有的商品信息 -->
+	<select id="findAllGoods" resultType="Goods">
+		select * from Goods
+	</select>
+	<!-- 获取前四个热卖推荐 -->
+	<select id="findGoodsByReMai" resultMap="goodsMap">
+		select goods.*,category.categoryId,category 
+		from goods left join category on 
+		goods.categoryId=category.categoryId 
+		order by goodsName limit 4
+	</select>
+	<!-- 获取前四个新品推荐 -->
+	<select id="findGoodsByXinPin" resultMap="goodsMap">
+		select goods.*,category.categoryId,category 
+		from goods left join category on 
+		goods.categoryId=category.categoryId
+		order by inputDate DESC limit 4
+	</select>
+	<!-- 获取前四个今日特惠 --> 
+	<select id="findGoodsByTeHui" resultMap="goodsMap">
+		select goods.*,category.categoryId,category 
+		from goods left join category on 
+		goods.categoryId=category.categoryId
+		order by goodsPrice limit 4
+	</select>
+</mapper>

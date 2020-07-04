@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TouchMapper">
+	<insert id="addTouch" parameterType="Touch">
+		insert into touch(name,address,phone,email,message)
+		values(#{name},#{address},#{phone},#{email},#{message})
+	</insert>
+</mapper>

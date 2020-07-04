@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CommentsMapperXF"> 
+	<resultMap type="Comment" id="commentMap">
+		<id property="commentId" column="commentId"/>
+		<association property="uId" javaType="User">
+			<id property="userId" column="userId"/>
+		</association>
+		<association property="goodsName" javaType="Goods">
+			<id property="gid" column="gid"/>
+		</association>
+	</resultMap>
+	<!-- 查询所有的订单信息 --> 
+	<select id="findAllComments" resultMap="commentMap">
+		select commentId,commentMessage,commentDate,commentIspass, 
+		user.*,goods.* from comment 
+		left join user on comment.uId=user.userId
+		left join goods on comment.goodsName=goods.goodsName  
+		order by commentDate,commentIspass DESC
+	</select>  
+	<!-- 根据 commentId 获取评论信息 -->
+	<select id="findCommentById" parameterType="Integer" resultMap="commentMap">
+		select commentId,commentMessage,commentDate,commentIspass, 
+		user.*,goods.* from comment 
+		left join user on comment.uId=user.userId
+		left join goods on comment.goodsName=goods.goodsName 
+		where commentId=#{commentId}
+	</select> 
+	<!-- 根据 commentId 修改 commentIspass -->
+	<update id="commentIspassById" parameterType="Integer">
+		update comment set commentIspass=#{commentIspass} 
+		where commentId=#{commentId}
+	</update>
+</mapper>

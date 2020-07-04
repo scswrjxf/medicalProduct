@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+	<!-- 根据账户密码查找账户 -->
+	<select id="findUserByIdAndPsw" resultType="User">
+		select * from user where userId=#{userId} and 
+		userPsw=#{userPsw} and isPass=1
+	</select>
+	<!-- 根据 userId 查找 User -->
+	<select id="findUserById" resultType="User">
+		select * from user where userId=#{userId}
+	</select> 
+	<!-- 添加新账户信息 -->
+	<insert id="addNewUser" parameterType="User">
+		insert into user(userId,userPsw,userAlice,userEmail,userSex,userCreateDate)
+		values(#{userId},#{userPsw},#{userAlice},#{userEmail},#{userSex},#{userCreateDate})
+	</insert>
+	<!-- 通过 userId 修改 userPsw -->
+	<update id="updateUserPswById" parameterType="User">
+		update user set userPsw=#{userPsw} where userId=#{userId}
+	</update>
+	<!-- 查询所有的用户信息 -->
+	<select id="findAllUsers" resultType="User">
+		select * from user
+	</select>
+	<!-- 根据 userId 修改其密码 -->
+	<update id="updatePwdById">
+		update user set userPsw=#{newPassword} where userId=#{userId}
+	</update>
+</mapper>
