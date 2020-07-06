@@ -26,14 +26,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.ModelAndView; 
 import com.mysql.jdbc.StringUtils;
 import com.pojo.Category;
+import com.pojo.Collect;
 import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.User;
 import com.service.CategoryService;
+import com.service.CollectServiceXF;
 import com.service.CommentsServiceXF;
 import com.service.GoodsServiceXF;
 import com.service.UserService;
@@ -50,6 +51,8 @@ public class LoginController{
 	private CategoryService categoryService;
 	@Resource
 	private CommentsServiceXF commentsServiceXF;
+	@Resource
+	private CollectServiceXF collectServiceXF;
 	// 访问 index 页面
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index() { 
@@ -242,7 +245,7 @@ public class LoginController{
 	
 	// 访问 product_detail 页面
 	@RequestMapping(value="/product_detail/{gid}",method=RequestMethod.GET)
-	public ModelAndView gotoproduct_detail(@PathVariable Integer gid) { 
+	public ModelAndView gotoproduct_detail(@PathVariable Integer gid,HttpSession session) { 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("client/product_detail");
 		// 根据 gid 获取商品信息
@@ -254,6 +257,14 @@ public class LoginController{
 		List<Comment> commentsList=commentsServiceXF.
 				findAllCommentsByGoodsName(goodsName);
 		mv.addObject("commentsList",commentsList);
+		// 获取用户登录信息
+		Object obj = session.getAttribute("loginer"); 
+		if(obj != null) {
+			// 查找商品是否收藏
+			Collect coll = collectServiceXF.findCollectByUidAndCid(
+					((User)obj).getUserId(), gid);
+			mv.addObject("coll",coll);
+		}
 		return mv;
 	}
 }

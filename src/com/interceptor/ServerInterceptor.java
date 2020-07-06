@@ -27,7 +27,7 @@ public class ServerInterceptor implements HandlerInterceptor {
 		// 非系统管理员跳转到首页
 		User user = (User)loginer;
 		if(!user.getRole().equals(1)) {
-			response.sendRedirect("/medical_product/");
+			response.sendRedirect("/medical_product/index");
 			return false;
 		}
 		return true;

@@ -12,7 +12,7 @@
             <p><strong>评论的商品：</strong><span>${commentInfor.goodsName.goodsName }</span></p>
             <p><strong>评论的用户：</strong><span>${commentInfor.uId.userId }</span></p>
             <p><strong>评论的内容：</strong><span>${commentInfor.commentMessage}</span></p>
-            <p><strong>评论用户头像：</strong><span>${commentInfor.uId.userPhoto }</span></p>
+            <p><strong>评论用户头像：</strong><span><img alt="" src="${pageContext.request.contextPath}/statics/file/${commentInfor.uId.userPhoto }"></span></p>
             <p><strong>评论日期：</strong><span><fmt:formatDate value="${commentInfor.commentDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></span></p>
             <div class="providerAddBtn" style="padding: 0 0px;margin: 0 0px;">
 				<c:if test="${commentInfor.commentIspass == 0}">

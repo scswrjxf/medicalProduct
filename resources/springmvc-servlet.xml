@@ -57,14 +57,12 @@
     <!-- 拦截器 -->
     <mvc:interceptors>
       
-    	<!-- 限制不登录管理员账户就直接访问管理员功能 -->
-    	<!--
+    	<!-- 限制不登录管理员账户就直接访问管理员功能 --> 
     	<mvc:interceptor>
 			<mvc:mapping path="/server/**"/>
 			<mvc:mapping path="/serverXF/**"/>
     		<bean class="com.interceptor.ServerInterceptor" />
-    	</mvc:interceptor>
-    	-->
+    	</mvc:interceptor> 
     	<!-- 为客户端获取所有板块和分类的数据列表 -->
     	<mvc:interceptor>
     		<mvc:mapping path="/"/>
@@ -79,6 +77,7 @@
     	<!-- 用户登录后才能使用前端用户功能 --> 
     	<mvc:interceptor>
     		<mvc:mapping path="/client/**"/>
+    		<mvc:mapping path="/clientXF/**"/>
     		<bean class="com.interceptor.ClientInterceptor"/>
     	</mvc:interceptor>
     </mvc:interceptors>

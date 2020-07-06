@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CollectMapperXF">    
+	<resultMap type="Collect" id="collectMap">
+		<id property="cid" column="cid"/>
+		<association property="collectUid" javaType="User">
+			<id property="userId" column="userId"/>
+		</association>
+		<association property="goodsId" javaType="Goods">
+			<id property="gid" column="gid"/>
+		</association>
+	</resultMap>
+	<!-- 添加新收藏 -->
+	<insert id="addNewCollect" parameterType="Collect">
+		insert into collect(collectUid,goodsId) values(#{userId},#{gid})
+	</insert>
+	<!-- 根据 gid 和 userId 查找是否加入收藏 -->
+	<select id="findCollectByUidAndCid" resultMap="collectMap">
+		select cid,user.*,goods.* from collect 
+		left join user on collect.collectUid=user.userId
+		left join goods on collect.goodsId=goods.gid  
+		where goods.gid=#{gid} and 
+		user.userId=#{userId}  
+	</select> 
+	<!-- 取消收藏 -->
+	<delete id="delCollectByUidAndCid">
+		delete from collect where collectUid=#{userId} and goodsId=#{gid}
+	</delete>
+</mapper>

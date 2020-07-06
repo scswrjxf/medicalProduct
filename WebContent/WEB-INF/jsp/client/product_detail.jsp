@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
-<meta name="author" content=""> 
+<meta name="author" content="">
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
@@ -51,7 +51,7 @@
 	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
-	rel="stylesheet"> 	
+	rel="stylesheet">
 </head>
 <body class="category-page">
 	<div id="page">
@@ -87,7 +87,6 @@
 									<form action="#" method="post" id="product_addtocart_form">
 										<input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
 										<div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
-											<div class="new-label new-top-left">New</div>
 											<div class="product-image">
 												<div class="product-full">
 													<img id="product-zoom"
@@ -167,8 +166,7 @@
 													<div style="width: 80%" class="rating"></div>
 												</div>
 												<p class="rating-links">
-													<a href="#">1 Review(s)</a> <span class="separator">|</span>
-													<a href="#">Add Your Review</a>
+													<a href="#">添加您的评论</a>
 												</p>
 											</div>
 											<div class="price-block">
@@ -179,7 +177,7 @@
 													</p>
 													<p class="#">
 														<span class="price-label">分类名：</span> <span>${goodInfor.categoryId.category }</span>
-													</p> 
+													</p>
 												</div>
 											</div>
 											<div class="add-to-box">
@@ -208,15 +206,21 @@
 
 											<div class="email-addto-box">
 												<ul class="add-to-links">
-													<li><a class="link-wishlist" href="wishlist.jsp"><span>Add
-																to Wishlist</span></a></li>
-													<li><span class="separator">|</span> <a
-														class="link-compare" href="compare.jsp"><span>Add
-																to Compare</span></a></li>
-												</ul>
-												<p class="email-friend">
-													<a href="#" class=""><span>Email to a Friend</span></a>
-												</p>
+												<c:if test="${!empty loginer }">
+												 	<c:choose>
+												 		<c:when test="${empty coll }">
+														 	<li><a class="link-wishlist" href="${pageContext.request.contextPath}/clientXF/add_new_collect/${goodInfor.gid}">
+														 		<strong>加入收藏</strong></a>
+														 	</li>
+												 		</c:when> 
+												 		<c:otherwise>
+					 										<li><a class="link-wishlist" href="${pageContext.request.contextPath}/clientXF/del_collect/${goodInfor.gid}">
+					 											<strong>取消收藏</strong></a>
+					 										</li>
+					 									</c:otherwise>
+												 	</c:choose>
+												 </c:if> 
+												</ul> 
 											</div>
 											<div class="social">
 												<ul class="link">
@@ -242,15 +246,16 @@
 										<ul id="product-detail-tab" class="nav nav-tabs product-tabs">
 											<li class="active"><a href="#product_tabs_description"
 												data-toggle="tab">产品描述</a></li>
-											<li><a href="#reviews_tabs" data-toggle="tab">评论</a>
-											</li>
-											<li><a href="#product_tabs_custom" data-toggle="tab">Custom Tab</a></li> 
+											<li><a href="#reviews_tabs" data-toggle="tab">评论</a></li>
+											<li><a href="#product_tabs_custom" data-toggle="tab">Custom
+													Tab</a></li>
 										</ul>
 										<div id="productTabContent" class="tab-content">
 											<div class="tab-pane fade in active"
 												id="product_tabs_description">
 												<div class="std">
-													<img alt="" src="${pageContext.request.contextPath}/statics/images/shoes-img.jpg"
+													<img alt=""
+														src="${pageContext.request.contextPath}/statics/images/shoes-img.jpg"
 														style="float: right">
 													<p>${goodInfor.goodsDesc}</p>
 												</div>
@@ -259,33 +264,37 @@
 												<div class="woocommerce-Reviews">
 													<!-- 获取该商品的所有评论 -->
 													<div>
-														<h2 class="woocommerce-Reviews-title"> ${goodInfor.goodsName}的所有评论 </h2>
+														<h2 class="woocommerce-Reviews-title">
+															${goodInfor.goodsName}的所有评论</h2>
 														<ol class="commentlist">
 															<c:forEach var="comment" items="${commentsList }">
 																<li class="comment">
 																	<div>
-																		<img alt="" src="${pageContext.request.contextPath}/statics/images/${comment.uId.userPhoto}"
+																		<img alt=""
+																			src="${pageContext.request.contextPath}/statics/file/${comment.uId.userPhoto}"
 																			class="avatar avatar-60 photo">
 																		<div class="comment-text">
 																			<div class="ratings">
 																				<div class="rating-box">
 																					<div style="width: 100%" class="rating"></div>
 																				</div>
-		
+
 																			</div>
 																			<p class="meta">
-																				<strong>${comment.uId.userAlice}</strong> <span>&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${comment.commentDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></span>
+																				<strong>${comment.uId.userAlice}</strong> <span>&nbsp;&nbsp;&nbsp;<fmt:formatDate
+																						value="${comment.commentDate}"
+																						pattern="yyyy年MM月dd日 HH:mm:ss" /></span>
 																			</p>
 																			<div class="description">
 																				<p>${comment.commentMessage}</p>
 																			</div>
 																		</div>
 																	</div>
-																</li> 
+																</li>
 															</c:forEach>
 														</ol>
 													</div>
-													
+
 													<!-- 添加评论 -->
 													<div>
 														<div>
@@ -300,30 +309,29 @@
 																	<div class="comment-form-rating">
 																		<label id="rating">您的评分</label>
 																		<p class="stars">
-																			<span>
-																				<a class="star-1" href="#">1</a> 
-																				<a class="star-2" href="#">2</a> 
-																				<a class="star-3" href="#">3</a>
-																				<a class="star-4" href="#">4</a> 
-																				<a class="star-5" href="#">5</a>
+																			<span> <a class="star-1" href="#">1</a> <a
+																				class="star-2" href="#">2</a> <a class="star-3"
+																				href="#">3</a> <a class="star-4" href="#">4</a> <a
+																				class="star-5" href="#">5</a>
 																			</span>
 																		</p>
 																	</div>
 																	<p class="comment-form-author">
-																		<label for="author">昵称 <span
-																			class="required">*</span></label> <input id="author"
-																			name="author" type="text" value="" size="30" required>
+																		<label for="author">昵称 <span class="required">*</span></label>
+																		<input id="author" name="author" type="text" value=""
+																			size="30" required>
 																	</p>
 																	<p class="comment-form-email">
-																		<label for="email">邮箱 <span
-																			class="required">*</span></label> <input id="email" 
-																			name="email" type="email" value="" size="30" required>
+																		<label for="email">邮箱 <span class="required">*</span></label>
+																		<input id="email" name="email" type="email" value=""
+																			size="30" required>
 																	</p>
 																	<p class="comment-form-comment">
-																		<label>您的评论<span class="required">*</span></label> 
-																		<textarea id="comment" name="comment" cols="45" rows="8" required>
-																		</textarea> 
-																	</p> 	 
+																		<label>您的评论<span class="required">*</span></label>
+																		<textarea id="comment" name="comment" cols="45"
+																			rows="8" required>
+																		</textarea>
+																	</p>
 																	<p class="form-submit">
 																		<input name="submit" type="submit" id="submit"
 																			class="submit" value="提交">
@@ -357,7 +365,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<!-- 相关产品 -->
 								<!-- Related Slider -->
 								<div class="related-pro">
@@ -1272,21 +1280,22 @@
 	<%@ include file="common/mobile_menu.jsp"%>
 
 	<!-- JavaScript -->
-	
-<script src="${pageContext.request.contextPath}/statics/js/wangEditor.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/common.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/jquery.flexslider.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/statics/js/cloud-zoom.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/statics/js/wangEditor.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/common.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/jquery.flexslider.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/statics/js/cloud-zoom.js"></script>
 </body>
 </html>
