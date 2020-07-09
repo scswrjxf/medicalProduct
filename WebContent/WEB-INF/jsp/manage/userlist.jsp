@@ -2,20 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/manage/common/head.jsp"%>
         <div class="right">
-            <div class="location">
-                <strong>你现在所在的位置是:</strong>
-                <span>用户管理页面</span>
-            </div>
-            <div class="search">
-           		<form method="post" action="">
-					<input name="method" value="query" class="input-text" type="hidden">
-					 <span>用户名：</span>
-					 <input name="queryname" class="input-text"	type="text" value="">
-					 
-					 <input	value="查 询" type="submit" id="searchbutton">
-					 
-				</form>
-            </div>
+            <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+		         <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+		         <span style="color: black;">用户管理页面</span>
+            </div> 
             <!--用户-->
             <table class="providerTable" cellpadding="0" cellspacing="0">
                 <tr class="firstTr">
@@ -41,7 +31,7 @@
 						</td>
 						<td>
 						<span><img alt="头像" style="height: 100px;width: 100px;" 
-						src="${pageContext.request.contextPath }/statics/images/${users.userPhoto }"></span>
+						src="${pageContext.request.contextPath }/statics/file/${users.userPhoto }"></span>
 						</td>
 						<td>
 							<span>	${users.userEmail }</span>

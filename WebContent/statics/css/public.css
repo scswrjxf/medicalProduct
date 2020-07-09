@@ -137,25 +137,33 @@ li{
     border-bottom: 1px solid rgba(69,139,116,0.5) ;
 }
 .list li:nth-child(1){
-    background: url("../images/zd.png") 0  center no-repeat;
+    background: url("../images/buy.png") 0  center no-repeat;
 }
 .list li:nth-child(2){
     background: url("../images/gys.png") 0  center no-repeat;
 }
 .list li:nth-child(3){
-    background: url("../images/yh.png") 0  center no-repeat;
+    background: url("../images/zd.png") 0  center no-repeat;background-size: 40px;
 }
 .list li:nth-child(4){
     background: url("../images/yh.png") 0  center no-repeat;
 }
 .list li:nth-child(5){
-    background: url("../images/mm.png") 0  center no-repeat;
+    background: url("../images/read.png") 0  center no-repeat;background-size: 30px;
 }
 .list li:nth-child(6){
-    background: url("../images/tc.png") 0  center no-repeat;
+    background: url("../images/xiugai.png") 0  center no-repeat;background-size: 30px;
 }
-.list li:nth-child(7){
-    background: url("../images/read.png") 0  center no-repeat;
+.list li:nth-child(7){ 
+    background: url("../images/home.png") 0  center no-repeat;background-size: 30px;
+}
+.list li:nth-child(8){
+    background: url("../images/mm.png") 0  center no-repeat;
+}
+.list li:nth-child(9){
+    background: url("../images/tc.png") 0  center no-repeat;
+    background-size: 45px;
+    background-position: -7px;
 }
 .list li:hover{
     background-color: #19b3bd;

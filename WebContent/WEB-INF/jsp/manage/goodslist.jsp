@@ -3,11 +3,11 @@
 <%@include file="common/head.jsp"%>
 
 <div class="right">
-        <div class="location">
-            <strong>你现在所在的位置是:</strong>
-            <span>商品管理页面</span>
+         <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+	         <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+	         <span style="color: black;"> 商品管理页面</span>
         </div>
-        <div class="search">
+        <div class="search" style="margin-bottom: 20px;">
         	<form method="post" action="">
 				<input name="method" class="input-text" value="query" type="hidden">
 				<span>商品名称：</span>

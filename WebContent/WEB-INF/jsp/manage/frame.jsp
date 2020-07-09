@@ -6,7 +6,7 @@
          
             <h2>${loginer.userAlice }</h2>
         
-            <p>欢迎来到超市订单管理系统!</p>
+            <p>欢迎来到医疗管理系统!</p>
         </div>
     </div>
 </section>

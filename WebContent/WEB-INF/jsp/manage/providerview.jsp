@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@include file="common/head.jsp"%>
  <div class="right">
-        <div class="location">
-            <strong>你现在所在的位置是:</strong>
-            <span>供应商管理页面 >> 信息查看</span>
+         <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+             <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+             <span style="color: black;"> 商品管理页面 >> 信息查看</span>
         </div>
         <div class="providerView">
             <p><strong>商品编码：</strong><span>${provider.proCode }</span></p>

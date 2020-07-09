@@ -2,20 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/manage/common/head.jsp"%>
         <div class="right">
-            <div class="location">
-                <strong>你现在所在的位置是:</strong>
-                <span>评论管理页面</span>
-            </div>
-            <div class="search">
-           		<form method="post" action="">
-					<input name="method" value="query" class="input-text" type="hidden">
-					 <span>评论编号：</span>
-					 <input name="queryname" class="input-text"	type="text" value="">
-					 
-					 <input	value="查 询" type="submit" id="searchbutton">
-					 
-				</form>
-            </div>
+            <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+	            <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+	            <span style="color: black;">评论管理页面</span>
+            </div> 
             <!--评论列表-->
             <table class="providerTable" cellpadding="0" cellspacing="0"> 
                 <tr class="firstTr">

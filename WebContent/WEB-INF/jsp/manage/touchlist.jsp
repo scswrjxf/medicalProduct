@@ -3,30 +3,18 @@
 <%@include file="common/head.jsp"%>
 
 <div class="right">
-        <div class="location">
-            <strong>你现在所在的位置是:</strong>
-            <span>联系我们管理页面</span>
-        </div>
-        <div class="search">
-        	<form method="get" action="">
-				<input name="method" value="query" type="hidden">
-				<span>供应商编码：</span>
-				<input name="queryProCode" type="text" value="">
-				
-				<span>供应商名称：</span>
-				<input name="queryProName" type="text" value="">
-				
-				<input value="查 询" type="submit" id="searchbutton">
-			</form>
-        </div>
+        <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+            <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+            <span style="color: black;">联系我们管理页面</span>
+        </div> 
         <!--供应商操作表格-->
         <table class="providerTable" cellpadding="0" cellspacing="0">
             <tr class="firstTr">
-                <th width="10%">发件人</th>
-                <th width="20%">邮件内容</th>
-                <th width="10%">发件人邮箱</th>
+                <th width="20%">发件人</th>
+                <th width="40%">邮件内容</th>
+                <th width="20%">发件人邮箱</th>
                 <th width="10%">状态</th>
-                <th width="30%">操作</th>
+                <th width="10%">操作</th>
             </tr>
             <c:forEach var="touch" items="${touch }" varStatus="status">
 				<tr>

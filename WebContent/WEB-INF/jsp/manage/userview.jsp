@@ -3,9 +3,9 @@
 <%@include file="/WEB-INF/jsp/manage/common/head.jsp"%>
 
  <div class="right">
-        <div class="location">
-            <strong>你现在所在的位置是:</strong>
-            <span>用户管理页面 >> 用户信息查看页面</span>
+        <div class="location" style="margin-bottom: 20px;margin-top: 10px;">
+	         <strong style="color: black;font-size: 16px;">你现在所在的位置是:</strong> 
+	         <span style="color: black;">用户管理页面 >> 用户信息查看页面</span>
         </div>
         <div class="providerView">
             <p><strong>用户ID：</strong><span>${userInfor.userId }</span></p>
@@ -13,7 +13,7 @@
             <p><strong>用户性别：</strong><span>${userInfor.userSex }</span></p>
             <p><strong>注册日期：</strong><span><fmt:formatDate value="${userInfor.userCreateDate}" pattern="yyyy-MM-dd"/></span></p>
             <p><strong>用户邮箱：</strong><span>${userInfor.userEmail }</span></p>
-            <p><strong>用户头像：</strong><span><img src="${pageContext.request.contextPath }/statics/images/${userInfor.userPhoto }"
+            <p><strong>用户头像：</strong><span><img src="${pageContext.request.contextPath }/statics/file/${userInfor.userPhoto }"
             style="height: 100px;width: 100px;" alt="头像" title="头像"/></span></p>
             <p><strong>用户角色：</strong>	
             	<span>
