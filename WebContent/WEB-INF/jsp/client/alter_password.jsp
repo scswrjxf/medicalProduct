@@ -78,8 +78,7 @@
 									action="${pageContext.request.contextPath}/clientXF/alter_password">
 									<input type="hidden" name="method" value="savepwd">
 									<!--div的class 为error是验证错误，ok是验证成功-->
-							 
-									<div class="info">${information}</div>
+							 		<p style="color: red;">${information }</p> 
 									<div class="">
 										<label for="oldPassword">旧密码：</label>
 										<input type="password" name="oldpassword" id="oldpassword" 

@@ -39,4 +39,8 @@ public interface CartService {
 	int updateUsersByUserId(User user);
 	
 	int updateUserPhotoByuserId(String userId,String userPhoto);
+	
+	User findUserByUserId(String userId);
+	
+	User findUserByUserAlice(String userAlice);
 }

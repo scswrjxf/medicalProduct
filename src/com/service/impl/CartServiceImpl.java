@@ -47,7 +47,7 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.findGoodsByGoodsId(goodsId);
 	}
 	/**
-	 * 查找购物车所有商品
+	 * 查找购物车所哟有商品
 	 */
 	@Override
 	public List<Cart> findAllCart(String userAlice) {
@@ -88,5 +88,13 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public int updateUserPhotoByuserId(String userId, String userPhoto) {
 		return cartMapper.updateUserPhotoByuserId(userId, userPhoto);
+	}
+	@Override
+	public User findUserByUserId(String userId) {
+		return cartMapper.findUserByUserId(userId);
+	}
+	@Override
+	public User findUserByUserAlice(String userAlice) {
+		return cartMapper.findUserByUserAlice(userAlice);
 	}
 }

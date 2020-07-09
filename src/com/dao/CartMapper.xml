@@ -65,4 +65,10 @@
 	<update id="updateUserPhotoByuserId">
 		update user set userPhoto=#{userPhoto} where userId=#{userId}
 	</update>
+	<select id="findUserByUserId" resultType="User">
+		select * from user where userId=#{userId}
+	</select>
+	<select id="findUserByUserAlice" resultType="User">
+		select * from user where userAlice=#{userAlice}	
+	</select>
 </mapper>

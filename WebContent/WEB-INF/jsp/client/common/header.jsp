@@ -145,16 +145,11 @@
 											<a class="product-image" title="Retis lapen casen" href="${pageContext.request.contextPath}/product_detail/${cartlist.goodsId}"><img
 												alt="Retis lapen casen" src="${pageContext.request.contextPath}/statics/file/${cartlist.gPhoto}">
 											</a>
-											<div class="product-details">
-												<div class="access">
-													<a class="btn-remove1" title="Remove This Item" href="#">删除</a>
-													<a class="btn-edit" title="Edit item" href="#"><i
-														class="icon-pencil"></i><span class="hidden">编辑</span></a>
-												</div>
+											<div class="product-details"> 
 												<!--access-->
-												<strong >${cartlist.goodsNumber}</strong> x <span class="price">￥${cartlist.goodsPrice}</span>
+												<strong >${cartlist.goodsNumber}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="price">￥${cartlist.goodsPrice}</span>
 												<p class="product-name">
-													<a href="#">${cartlist.goodsName}</a>
+													<a href="#" style="cursor:hand">${cartlist.goodsName}</a>
 												</p>
 											</div>
 										</div>
@@ -164,10 +159,10 @@
 								</ul>
 								<!--actions-->
 								<div class="actions">
-									<button class="btn-checkout" title="Checkout" type="button">
-										<span>结账</span>
-									</button>
-									<a href="${pageContext.request.contextPath}/cartlist" class="view-cart">
+									<a href="${pageContext.request.contextPath}/orderlist" style="text-align: center;margin-right: 10px;" class="btn-checkout" title="查看订单" type="button">
+										<span>查看订单</span>
+									</a>
+									<a href="${pageContext.request.contextPath}/cartlist" style="text-align: center;" class="btn-checkout" title="去购物车" >
 										<span>购物车</span>
 									</a>
 								</div>

@@ -76,7 +76,7 @@
     	</mvc:interceptor>
     	<!-- 用户登录后才能使用前端用户功能 --> 
     	<mvc:interceptor>
-    		<mvc:mapping path="/client/**"/>
+    		<mvc:mapping path="/cserver/**"/>
     		<mvc:mapping path="/clientXF/**"/>
     		<bean class="com.interceptor.ClientInterceptor"/>
     	</mvc:interceptor>

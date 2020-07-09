@@ -95,7 +95,6 @@
 							<div class="providerAdd" style="border-color: #19b3bd;bacbackground-color:#19b3bd;">
 								<form id="userForm" name="userForm" method="post" 
 									action="${pageContext.request.contextPath}/cserver/alter_user">
-									<input type="hidden" name="userId" value="${loginer.userId}">
 									<!--div的class 为error是验证错误，ok是验证成功-->
 							 
 									<div class="info">${information}</div>
@@ -105,19 +104,19 @@
 										value="${loginer.userId}" readonly="readonly"><font color="#e72c59">&nbsp;&nbsp;*ID不能修改</font>
 									</div>
 									<div>
-										<label for="userAlice">昵称：</label> 
+										<label for="userAlice">用户昵称：</label> 
 										<input type="text" name="userAlice" id="userAlice" 
-										value="${loginer.userAlice}"><font color="red"></font>
+										value="${user.userAlice}" required="required"><font color="#e72c59"></font>
 									</div>
 									<div>
 										<label for="userEmail">邮箱：</label> 
 										<input type="email" name="userEmail" id="userEmail"
-										value="${loginer.userEmail}"><font color="red"></font>
+										value="${user.userEmail}" required="required"><font color="red"></font>
 									</div>
 									<div>
 										<label for="userSex">性别：</label> 
 										<c:choose>
-											<c:when test="${loginer.userSex==男}"> 
+											<c:when test="${user.userSex==男}"> 
 												<input type="radio" name="userSex" id="userSex"value="男" checked="checked">男
 												<input type="radio" name="userSex" id="userSex"value="女">女
 											</c:when>
@@ -129,7 +128,7 @@
 										<font color="red"></font>
 										<div>
 											<label for="userCreateDate">注册日期：</label> 
-											<fmt:formatDate value="${loginer.userCreateDate}" pattern="yyyy-MM-dd"/>
+											<fmt:formatDate value="${user.userCreateDate}" pattern="yyyy-MM-dd"/>
 										</div>
 									</div>
 										<div class="providerAddBtn">
@@ -159,7 +158,8 @@
 							</div>
 						</div>
 					</aside>
- 
+
+
 				</div>
 			</div>
 		</section>
@@ -187,14 +187,7 @@
 		src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
- <script type="text/javascript">
-	//当前id为save被点击的时候，触发 form 标签的提交事件
-	$("#save").click(function(){
-		// 使得表单提交
-		$("form").trigger("submit");
-	});
-	</script>
- 
+
 <script type="text/javascript">
 function upload(){
 	var formData = new FormData();
@@ -219,6 +212,30 @@ function upload(){
 		}
 	});
 }
+//验证用户昵称唯一性
+// 为 id 为 userName 的输入框添加 blur 事件，发送 ajax 请求到控制器
+$("#userAlice").blur(function(){
+	// 获取 goodsName 的值
+	var userAliceVal = $(this).val();
+	// 发送异步请求，把获取的值传递到控制器
+	$.ajax({
+		   type: "POST",
+		   url: "${pageContext.request.contextPath}/cserver/ucexist",
+		   data: "userAlice="+userAliceVal,
+		   success:function(msg){
+			   
+			   if(msg.userAlice =='exist'){
+				   $("#userAlice").next().html("&nbsp;&nbsp*用户昵称已存在");
+			   }
+			   else{
+				   $("#userAlice").next().html("&nbsp;&nbsp*用户昵称可以使用");
+			   }
+		   },
+		   error:function (XMLHttpRequest, textStatus, errorThrown) {
+			    alert("异常：" +textStatus+errorThrown);
+		   }
+	});
+});
 </script>
 </body>
 </html>

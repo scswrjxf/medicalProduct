@@ -76,7 +76,7 @@
 									<div class="col-1 new-users">
 										<strong>新用户</strong>
 										<div class="content">
-											<p>如果您拥有我们的帐户，请登录。</p>
+											<p>如果您拥有我们的帐户，请登录。</p> 
 											<div class="buttons-set">
 												<button
 													onclick="window.location='${pageContext.request.contextPath}/login';"
@@ -90,6 +90,7 @@
 										<strong>注册账户</strong>
 										<div class="content">
 											<p>如果您没有我们的帐户，请注册。</p>
+											<p style="color: red;">${error }</p>
 											<form:form action="${pageContext.request.contextPath}/regist"
 												cssClass="form" modelAttribute="user">
 												<fieldset>

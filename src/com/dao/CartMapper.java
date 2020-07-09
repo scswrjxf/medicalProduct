@@ -39,4 +39,8 @@ public interface CartMapper {
 	
 	int updateUserPhotoByuserId(@Param("userId") String userId,
 			@Param("userPhoto") String userPhoto);
+	
+	User findUserByUserId(String userId);
+	
+	User findUserByUserAlice(@Param("userAlice") String userAlice);
 }
