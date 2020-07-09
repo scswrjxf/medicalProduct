@@ -112,7 +112,7 @@
 							<div class="block-content">
 								<ol id="recently-viewed-items">
 									<li class="item odd"><a
-										href="${pageContext.request.contextPath}/#">用户设置</a></li>
+										href="${pageContext.request.contextPath}/cserver/viewuser">用户设置</a></li>
 									<li class="item odd"><a
 										href="${pageContext.request.contextPath}/cartlist">购物车</a></li>
 									<li class="item odd"><a
@@ -124,8 +124,7 @@
 							</div>
 						</div>
 					</aside>
-
-
+ 
 				</div>
 			</div>
 		</section>

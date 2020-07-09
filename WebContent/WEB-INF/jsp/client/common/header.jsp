@@ -54,7 +54,7 @@
 											<li role="presentation"><a
 												href="${pageContext.request.contextPath}/orderlist">我的订单</a></li> 
 											<li role="presentation"><a
-												href="${pageContext.request.contextPath}/user_reset_password">修改密码</a></li>
+												href="${pageContext.request.contextPath}/clientXF/alter_password">修改密码</a></li>
 										</ul>
 									</div>
 									<!-- 下拉列表 -->

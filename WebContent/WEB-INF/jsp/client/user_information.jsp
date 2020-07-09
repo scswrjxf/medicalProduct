@@ -159,8 +159,7 @@
 							</div>
 						</div>
 					</aside>
-
-
+ 
 				</div>
 			</div>
 		</section>
@@ -188,13 +187,14 @@
 		src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
-<script type="text/javascript"> 
-function loginFunc(){
-var form = document.getElementById("userForm");
-form.submit();
-showMessage("${information}");
-}
-</script> 
+ <script type="text/javascript">
+	//当前id为save被点击的时候，触发 form 标签的提交事件
+	$("#save").click(function(){
+		// 使得表单提交
+		$("form").trigger("submit");
+	});
+	</script>
+ 
 <script type="text/javascript">
 function upload(){
 	var formData = new FormData();

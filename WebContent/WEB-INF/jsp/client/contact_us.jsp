@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<!-- 引入 Spring MVC 提供的表单标签库 -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>联系我们</title>
-
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
@@ -47,72 +47,70 @@
   <section class="main-container col2-left-layout">
     <div class="container">
       <div class="row">
-
-          
-   
         <div class="col-sm-9 col-sm-push-3">
           <article class="col-main">
             <div class="page-title">
               <h2>联系我们</h2>
             </div>
             <div class="static-contain">
+             <form:form action="" method="POST" modelAttribute="touch">
               <fieldset class="group-select">
                 <ul>
                   <li id="billing-new-address-form">
                     <fieldset>
                       <input type="hidden" name="billing[address_id]" value="" id="billing:address_id">
                       <ul>
+                         
                         <li>
                           <div class="customer-name">
                             <div class="input-box name-firstname">
-                              <label for="billing:firstname"> First Name<span class="required">*</span></label>
+                            	<form:label path="name">姓名：<span class="required">*</span></form:label>
                               <br>
-                              <input type="text" id="billing:firstname" name="billing[firstname]" value="" title="First Name" class="input-text ">
+                              	<form:input path="name" cssClass="input-text"/><br>
+                    			<form:errors path="name" cssStyle="color:red;"/>
                             </div>
                             <div class="input-box name-lastname">
-                              <label for="billing:lastname"> Email Address <span class="required">*</span> </label>
+                            	<form:label path="email">电子邮箱：<span class="required">*</span></form:label>
                               <br>
-                              <input type="text" id="billing:lastname" name="billing[lastname]" value="" title="Last Name" class="input-text">
+                              	<form:input path="email" cssClass="input-text"/><br>
+                    			<form:errors path="email" cssStyle="color:red;"/>
                             </div>
                           </div>
                         </li>
                         <li>
                           <div class="input-box">
-                            <label for="billing:company">Company</label>
+                          		<form:label path="phone">电话：</form:label>
                             <br>
-                            <input type="text" id="billing:company" name="billing[company]" value="" title="Company" class="input-text">
-                          </div>
-                          <div class="input-box">
-                            <label for="billing:email">Telephone <span class="required">*</span></label>
-                            <br>
-                            <input type="text" name="billing[email]" id="billing:email" value="" title="Email Address" class="input-text validate-email">
+                            	<form:input path="phone" cssClass="input-text validate-email"/>
+                    			<form:errors path="phone" cssStyle="color:red;"/>
                           </div>
                         </li>
                         <li>
-                          <label for="billing:street1">Address <span class="required">*</span></label>
+                        		<form:label path="address">地址：</form:label>
                           <br>
-                          <input type="text" title="Street Address" name="billing[street][]" id="billing:street1  street1" value="" class="input-text required-entry">
-                        </li>
-                        <li>
-                          <input type="text" title="Street Address 2" name="billing[street][]" id="billing:street2 street2" value="" class="input-text required-entry">
+                          		<form:input path="address" cssClass="input-text"/>
+                    			<form:errors path="address" cssStyle="color:red;"/>
                         </li>
                         <li class="">
-                          <label for="comment">Comment<em class="required">*</em></label>
+                        		<form:label path="message">信息：<span class="required">*</span></form:label>
                           <br>
                           <div style="float:none" class="">
-                            <textarea name="comment" id="comment" title="Comment" class="required-entry input-text" cols="5" rows="3"></textarea>
+                          	<form:textarea path="message" cols="5" rows="3"/><br>
+                          	<form:errors path="message" cssStyle="color:red;"/>
                           </div>
                         </li>
+                        
                       </ul>
                     </fieldset>
                   </li>
-                  <p class="require"><em class="required">* </em>Required Fields</p>
+                  <p class="require"><em class="required">* </em>必填项</p>
                   <input type="text" name="hideit" id="hideit" value="" style="display:none !important;">
                   <div class="buttons-set">
-                    <button type="submit" title="Submit" class="button submit"> <span> Submit </span> </button>
+                     <button type="submit" title="Submit" class="button submit"> <span> 提交 </span> </button>
                   </div>
                 </ul>
               </fieldset>
+             </form:form>
             </div>
           </article>
           <!--	///*///======    End article  ========= //*/// --> 
@@ -122,8 +120,8 @@
             <div class="block block-company"> 
               <div class="block-content">
                 <ol id="recently-viewed-items">
-                  <li class="item odd"><strong>关于我们</strong></li> 
-                  <li class="item last"><a href="${pageContext.request.contextPath}/contact_us">联系我们</a></li>
+                  <li class="item odd"><a href="${pageContext.request.contextPath}/about_us">关于我们</a></li> 
+                  <li class="item last"><strong>联系我们</strong></li>
                 </ol>
               </div>
             </div>

@@ -404,7 +404,8 @@ public class LoginController {
 	}
 
 	// 生成订单
-	@RequestMapping(value = "/addNewOrder", method = RequestMethod.GET)
+	@RequestMapping(value = "/addNewOrder")
+	@ResponseBody
 	public String addNewOrder(String orderName, Integer total, String userAlice, HttpSession session) {
 		User loginer = (User) session.getAttribute("loginer");
 		// 生成订单编号
@@ -415,8 +416,8 @@ public class LoginController {
 		// 生成订单
 		cartService.addNewOrder(orderName, total, loginer.getUserId(), code, orderDate);
 		// 清空购物车
-		cartService.delCart(userAlice);
-		return "redirect:/cartlist";
+		cartService.delCart(loginer.getUserAlice());
+		return JSON.toJSONString("成功");
 	}
 
 	// 跳转到ordertlist页面
@@ -445,7 +446,7 @@ public class LoginController {
 		return "redirect:/orderlist";
 	}
 
-	// 实现加入购物车功能
+	// 实现全部商品页加入购物车功能
 	@RequestMapping(value = "/addcartlist/{goodsId}")
 	public String AddCartList(@PathVariable Integer goodsId, Model model, HttpSession session) {
 		// 获取用户信息

@@ -7,17 +7,14 @@
 			<div class="wpb_wrapper">
 				<div class="banner">
 					<div class="banner-content">
-						<h4>Drugs Collection</h4>
-						<h5>Sale upto 50% off</h5>
-						<a href="" class="readmore-link">Read more <i
-							class="fa fa-chevron-circle-right"></i></a>
+						<h4>药品收集</h4>
+						<h5>减价高达50％</h5>
 					</div>
 					<div class="banner-img">
-						<a href="#"><img
+						<img
 							src="${pageContext.request.contextPath}/statics/images/banner1.jpg"
-							alt=""></a>
+							alt="">
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -25,59 +22,45 @@
 			<div class="wpb_wrapper">
 				<div class="large-6">
 					<div class="wpb_wrapper">
-
 						<div class="banner">
 							<div class="banner-content1">
-								<h6>"Covid19"</h6>
-								<h3>Use Promo Code</h3>
-								<p>Get Upto 20% Off</p>
+								<h6>“新冠肺炎”</h6>
+								<h3>使用促销商品</h3>
+								<p>减价20％</p>
 							</div>
 							<div class="banner-img">
-								<a href="#"><img
+								<img
 									src="${pageContext.request.contextPath}/statics/images/h2-banner-white.jpg"
-									alt=""> </a>
+									alt="">
 							</div>
-
-
-
 						</div>
 					</div>
 				</div>
-
 				<div class="large-6">
 					<div class="wpb_wrapper">
 						<div class="banner">
 							<div class="banner-img">
-								<a href="#"> <img
+								<img
 									src="${pageContext.request.contextPath}/statics/images/banner2.jpg"
 									alt="">
-								</a>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
-
 			<div class="row margin-top-5">
 				<div class="large-12">
 					<div class="wpb_wrapper">
 						<div class="banner">
 							<div class="banner-content">
-
-								<h4>Sanitizers</h4>
-								<h5>starting from $99</h5>
-								<a href="" class="readmore-link">Read more <i
-									class="fa fa-chevron-circle-right"></i></a>
+								<h4>消毒剂</h4>
+								<h5>起价为￥ 99</h5>
 							</div>
 							<div class="banner-img">
-								<a href="#"> <img
+								<img
 									src="${pageContext.request.contextPath}/statics/images/banner3.jpg"
 									alt="">
-
-								</a>
 							</div>
-
 						</div>
 					</div>
 				</div>
