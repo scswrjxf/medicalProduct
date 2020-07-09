@@ -1,4 +1,6 @@
 package com.service; 
+import java.util.List;
+
 import com.pojo.Collect;
 
 public interface CollectServiceXF { 
@@ -6,5 +8,7 @@ public interface CollectServiceXF {
 
 	Collect findCollectByUidAndCid(String userId,Integer gid);
 
-	int delCollectByUidAndCid(String userId, Integer gid); 
+	int delCollectByUidAndCid(String userId, Integer gid);
+
+	List<Collect> findAllCollectById(String userId); 
 }

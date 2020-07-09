@@ -40,7 +40,8 @@
 							<span>${users.userSex }</span>
 						</td>
 						<td>
-						<span><img alt="头像" src="${pageContext.request.contextPath }/statics/images/${users.userPhoto }"></span>
+						<span><img alt="头像" style="height: 100px;width: 100px;" 
+						src="${pageContext.request.contextPath }/statics/images/${users.userPhoto }"></span>
 						</td>
 						<td>
 							<span>	${users.userEmail }</span>
@@ -124,14 +125,11 @@ $(function(){
 		                    +'<th width="10%">是否通过审核</th>'
 		                    +'<th width="20%">操作</th></tr>');
 				   for(var i in data){
-					   <td>
-						<span><img alt="头像" src="${pageContext.request.contextPath }/statics/images/${users.userPhoto }"></span>
-						</td>
 						var str = '<tr>'
 						   +'<td>'+data[i].userId+'</td>'
 						   +'<td>'+data[i].userAlice+'</td>'
 						   +'<td>'+data[i].userSex+'</td>'
-						   +'<td><img alt="头像" src="${pageContext.request.contextPath }/statics/images/'+data[i].userPhoto+'></td>'
+						   +'<td><img alt="头像" src="${pageContext.request.contextPath }/statics/images/'+data[i].userPhoto+'"></td>'
 						   +'<td>'+data[i].userEmail+'</td>';
 						if(data[i].userRole == 0)
 							str += '<td>普通用户</td>';

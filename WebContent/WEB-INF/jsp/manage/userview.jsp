@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/manage/common/head.jsp"%>
+
  <div class="right">
         <div class="location">
             <strong>你现在所在的位置是:</strong>
@@ -12,7 +13,8 @@
             <p><strong>用户性别：</strong><span>${userInfor.userSex }</span></p>
             <p><strong>注册日期：</strong><span><fmt:formatDate value="${userInfor.userCreateDate}" pattern="yyyy-MM-dd"/></span></p>
             <p><strong>用户邮箱：</strong><span>${userInfor.userEmail }</span></p>
-            <p><strong>用户头像：</strong><span><img src="${pageContext.request.contextPath }/statics/images/${userInfor.userPhoto }" alt="头像" title="头像"/></span></p>
+            <p><strong>用户头像：</strong><span><img src="${pageContext.request.contextPath }/statics/images/${userInfor.userPhoto }"
+            style="height: 100px;width: 100px;" alt="头像" title="头像"/></span></p>
             <p><strong>用户角色：</strong>	
             	<span>
             		<c:if test="${userInfor.role == 0 }">普通用户</c:if>

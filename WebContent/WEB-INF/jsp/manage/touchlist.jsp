@@ -17,49 +17,39 @@
 				<input name="queryProName" type="text" value="">
 				
 				<input value="查 询" type="submit" id="searchbutton">
-				<a href="${pageContext.request.contextPath}/server/goodsadd">添加商品</a>
 			</form>
         </div>
         <!--供应商操作表格-->
         <table class="providerTable" cellpadding="0" cellspacing="0">
             <tr class="firstTr">
-                <th width="10%">商品名称</th>
-                <th width="20%">商品图片</th>
-                <th width="10%">商品价格</th>
-                <th width="10%">商品描述</th>
-                <th width="10%">商品数量</th>
-                <th width="10%">上架时间</th>
-                <th width="10%">商品分类</th>
+                <th width="10%">发件人</th>
+                <th width="20%">邮件内容</th>
+                <th width="10%">发件人邮箱</th>
+                <th width="10%">状态</th>
                 <th width="30%">操作</th>
             </tr>
-            <c:forEach var="goods" items="${goodsList }" varStatus="status">
+            <c:forEach var="touch" items="${touch }" varStatus="status">
 				<tr>
 					<td>
-					<span>${goods.goodsName }</span>
+					<input hidden="">
+					<span>${touch.name}</span>
 					</td>
 					<td>
-					<span><img style="height:100px;width: 100px; " alt="商品图片" src="${pageContext.request.contextPath}/statics/file/${goods.goodsPhoto}"> </span>
+					<span>${touch.message}</span>
 					</td>
 					<td>
-					<span>${goods.goodsPrice}</span>
+						<c:if test="${touch.touchIspass==0 }">
+							<span style="color: red;">未查看</span>
+						</c:if>	
+						<c:if test="${touch.touchIspass==1 }">
+							<span>已查看</span>
+						</c:if>
 					</td>
 					<td>
-					<span>${goods.goodsDesc}</span>
+					<span>${touch.email}</span>
 					</td>
 					<td>
-					<span>${goods.goodsNumber}</span>
-					</td>
-					<td>
-					<span>
-					<fmt:formatDate value="${goods.inputDate}" pattern="yyyy-MM-dd"/>
-					</span>
-					</td>
-					<td>
-					<span>${goods.categoryId.category}</span>
-					</td>
-					<td>
-					<span><a class="modifyProvider" href="${pageContext.request.contextPath}/server/goodsmodify/${goods.gid }"><img src="${pageContext.request.contextPath }/statics/images/xiugai.png" alt="修改" title="修改"/></a></span>
-					<span><a class="deleteGoods" href="javascript:;" gid=${goods.gid } goodsName=${goods.goodsName }><img src="${pageContext.request.contextPath }/statics/images/schu.png" alt="删除" title="删除"/></a></span>
+					<span><a class="viewTouch" href="${pageContext.request.contextPath}/server/touchview/${touch.tid}"><img src="${pageContext.request.contextPath }/statics/images/read.png" alt="查看" title="查看"/></a></span>
 					</td>
 				</tr>
 			</c:forEach>

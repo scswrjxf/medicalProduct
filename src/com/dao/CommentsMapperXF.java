@@ -15,5 +15,7 @@ public interface CommentsMapperXF {
 	int commentIspassById(@Param("commentId") Integer commentId,
 			@Param("commentIspass") Integer commentIspass);
 
-	List<Comment> findAllCommentsByGoodsName(String goodsName);  
+	List<Comment> findAllCommentsByGoodsName(String goodsName);
+
+	int addNewComment(Comment comment);  
 }

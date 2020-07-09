@@ -14,8 +14,10 @@ public class Touch {
 	private String address;
 	@NotBlank(message="信息不能为空")
 	private String message;
+	private Integer touchIspass;
 	public Touch() {}
-	public Touch(Integer tid, String name, String email, String phone, String address, String message) {
+	public Touch(Integer tid, String name, String email, String phone, String address, String message,
+			Integer touchIspass) {
 		super();
 		this.tid = tid;
 		this.name = name;
@@ -23,6 +25,7 @@ public class Touch {
 		this.phone = phone;
 		this.address = address;
 		this.message = message;
+		this.touchIspass = touchIspass;
 	}
 	public Integer getTid() {
 		return tid;
@@ -60,4 +63,11 @@ public class Touch {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	public Integer getTouchIspass() {
+		return touchIspass;
+	}
+	public void setTouchIspass(Integer touchIspass) {
+		this.touchIspass = touchIspass;
+	}
+	
 }

@@ -28,6 +28,7 @@ import com.mysql.jdbc.StringUtils;
 import com.pojo.About;
 import com.pojo.Category;
 import com.pojo.Goods;
+import com.pojo.Touch;
 import com.pojo.User;
 import com.service.ServerService;
 
@@ -148,8 +149,6 @@ public class ServerController {
 		ModelAndView mv=new ModelAndView();
 		if(StringUtils.isNullOrEmpty(goods.getGoodsName()))
 			goods.setGoodsName(null);
-		if(StringUtils.isNullOrEmpty(goods.getGoodsPrice()))
-			goods.setGoodsPrice(null);
 		serverService.updateGoodsByGid(goods);
 		mv.setViewName("redirect:/server/goodsmodify/"+goods.getGid());
 		return mv;
@@ -283,5 +282,35 @@ public class ServerController {
 		serverService.updateAboutByAid(about);
 		mv.setViewName("redirect:/server/about_us");
 		return mv;
+	}
+	// 跳转到touchlist 页面
+	@RequestMapping(value="/touchlist")
+	public ModelAndView touchlist() {
+		ModelAndView mv = new ModelAndView("manage/touchlist");
+		// 获取所有商品
+		List<Touch> touch = serverService.findAllTouch();
+		mv.addObject("touch", touch);
+		
+		return mv;
+	}
+	// 跳转到 touchview 页面（REST）
+	@RequestMapping("/touchview/{tid}")
+	public ModelAndView touchview(@PathVariable Integer tid) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("manage/touchview");
+		// 根据userId获取用户信息
+		Touch touch = serverService.findTouchByTid(tid);
+		mv.addObject("touch",touch);
+		// 根据tid 修改 isPass
+		serverService.touchIspassByTid(tid);
+		return mv;
+	}
+	//根据goodsName模糊查询	
+	@RequestMapping(value="/goodsbyname")
+	@ResponseBody
+	public Object findGoodsByName(String goodsName) {
+		List<Goods> goods = serverService.findGoodsByName(goodsName);
+		// 把用户列表对象转换为 JSON 字符串
+		return JSON.toJSONString(goods);
 	}
 }

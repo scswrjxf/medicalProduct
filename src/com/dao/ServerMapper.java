@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.pojo.About;
 import com.pojo.Category;
 import com.pojo.Goods;
+import com.pojo.Touch;
 import com.pojo.User;
 
 public interface ServerMapper {
@@ -43,4 +44,12 @@ public interface ServerMapper {
 	List<About> findAbout();
 	
 	int updateAboutByAid(About about);
+	
+	List<Touch> findAllTouch();
+	
+	Touch findTouchByTid(Integer tid);
+	
+	int touchIspassByTid(Integer tid);
+	
+	List<Goods> findGoodsByName(String goodsName);
 }

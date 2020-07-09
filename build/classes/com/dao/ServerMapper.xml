@@ -82,4 +82,23 @@
 	<update id="updateAboutByAid" parameterType="About">
 		update about set aboutTitle=#{aboutTitle},aboutDesc=#{aboutDesc} where aid=#{aid}
 	</update>
+	<!-- 查询所有的用户信息 -->
+	<select id="findAllTouch" resultType="Touch">
+		select * from touch
+	</select>
+	<!-- 根据tid获取touch信息 -->
+	<select id="findTouchByTid" parameterType="Integer" resultType="Touch">
+		select * from touch where tid=#{tid}
+	</select>
+	<!-- 根据 tid 修改 isPass -->
+	<update id="touchIspassByTid">
+		update touch set touchIsPass=1 where tid=#{tid}
+	</update>
+	<!-- 根据goodsName进行模糊查询goods -->
+	<select id="findGoodsByName" resultMap="goodsMap">
+	select goods.gid gid,category.categoryId cid,goodsName,goodsPhoto,goodsPrice,goodsDesc,inputDate,
+			goodsNumber,category from goods left join category 
+			on goods.categoryId=category.categoryId 
+			where goodsName like concat('%',#{goodsName},'%')
+	</select>
 </mapper>

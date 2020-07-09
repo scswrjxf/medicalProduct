@@ -5,6 +5,7 @@ import java.util.List;
 import com.pojo.About;
 import com.pojo.Category;
 import com.pojo.Goods;
+import com.pojo.Touch;
 import com.pojo.User;
 
 public interface ServerService {
@@ -39,4 +40,12 @@ public interface ServerService {
 	List<About> findAbout();
 	
 	int updateAboutByAid(About about);
+	
+	List<Touch> findAllTouch();
+	
+	Touch findTouchByTid(Integer tid);
+	
+	int touchIspassByTid(Integer tid);
+	
+	List<Goods> findGoodsByName(String goodsName);
 }

@@ -10,6 +10,7 @@ import com.dao.ServerMapper;
 import com.pojo.About;
 import com.pojo.Category;
 import com.pojo.Goods;
+import com.pojo.Touch;
 import com.pojo.User;
 import com.service.ServerService;
 
@@ -130,5 +131,21 @@ public class ServerServiceImpl implements ServerService {
 	@Override
 	public int updateAboutByAid(About about) {
 		return serverMapper.updateAboutByAid(about);
+	}
+	@Override
+	public List<Touch> findAllTouch() {
+		return serverMapper.findAllTouch();
+	}
+	@Override
+	public Touch findTouchByTid(Integer tid) {
+		return serverMapper.findTouchByTid(tid);
+	}
+	@Override
+	public int touchIspassByTid(Integer tid) {
+		return serverMapper.touchIspassByTid(tid);
+	}
+	@Override
+	public List<Goods> findGoodsByName(String goodsName) {
+		return serverMapper.findGoodsByName(goodsName);
 	}
 }

@@ -53,7 +53,7 @@
         <div class="col-sm-9 col-sm-push-3">
           <article class="col-main">
             <div class="page-title">
-              <h2>Contact Us</h2>
+              <h2>联系我们</h2>
             </div>
             <div class="static-contain">
               <fieldset class="group-select">
@@ -118,16 +118,12 @@
           <!--	///*///======    End article  ========= //*/// --> 
         </div>
         <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-            <div class="side-banner"><img src="images/side-banner.jpg" alt="banner"></div>
-            <div class="block block-company">
-              <div class="block-title">Company </div>
+            <div class="side-banner"><img src="${pageContext.request.contextPath}/statics/images/side-banner.jpg" alt="banner"></div>
+            <div class="block block-company"> 
               <div class="block-content">
                 <ol id="recently-viewed-items">
-                  <li class="item odd"><a href="#">About Us</a></li>
-                  <li class="item even"><a href="#">Sitemap</a></li>
-                  <li class="item  odd"><a href="#">Terms of Service</a></li>
-                  <li class="item even"><a href="#">Search Terms</a></li>
-                  <li class="item last"><strong>Contact Us</strong></li>
+                  <li class="item odd"><strong>关于我们</strong></li> 
+                  <li class="item last"><a href="${pageContext.request.contextPath}/contact_us">联系我们</a></li>
                 </ol>
               </div>
             </div>

@@ -14,4 +14,6 @@ public interface CommentsServiceXF {
 
 	List<Comment> findAllCommentsByGoodsName(String goodsName);
 
+	int addNewComment(Comment comment);
+
 }

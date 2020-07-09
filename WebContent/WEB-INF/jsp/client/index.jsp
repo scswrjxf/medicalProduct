@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,15 +57,15 @@
 		<!-- Header -->
 		<%@ include file="common/header.jsp"%>
 		<!-- end header -->
-		
+
 		<!-- container-fluid 开始     轮播-->
 		<%@ include file="common/container_fluid.jsp"%>
 		<!-- container-fluid 结束 -->
-		
+
 		<!-- section-element container 开始 -->
 		<%@ include file="common/section_element container.jsp"%>
 		<!-- section-element container 结束 -->
-		
+
 		<div class="container">
 			<div class="content-page">
 
@@ -77,7 +77,8 @@
 							<ul class="nav navbar-nav">
 								<li class="active"><a data-toggle="tab" href="#tab-1">热卖推荐</a></li>
 								<li class=""><a data-toggle="tab" href="#tab-2">新品推荐</a></li>
-								<li class=""><a data-toggle="tab" href="#tab-3" class="active">今日特惠</a></li>
+								<li class=""><a data-toggle="tab" href="#tab-3"
+									class="active">今日特惠</a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -87,16 +88,18 @@
 						<div class="product-bestseller-content">
 							<div class="product-bestseller-list">
 								<div class="tab-container">
-								<!-- 热卖推荐 -->
+									<!-- 热卖推荐 -->
 									<div class="tab-panel active" id="tab-1">
 										<div class="category-products">
 											<ul class="products-grid">
-												<c:forEach var="remai" items="${remaiList }" varStatus="status">
+												<c:forEach var="remai" items="${remaiList }"
+													varStatus="status">
 													<li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
 														<div class="item-inner">
 															<div class="item-img">
 																<div class="item-img-info">
-																	<a class="product-image" href="${pageContext.request.contextPath}/product_detail/${remai.gid}">
+																	<a class="product-image"
+																		href="${pageContext.request.contextPath}/product_detail/${remai.gid}">
 																		<img alt=""
 																		src="${pageContext.request.contextPath}/statics/products-images/${remai.goodsPhoto}">
 																	</a>
@@ -105,8 +108,8 @@
 																		<ul class="add-to-links">
 																			<li><a class="link-quickview"
 																				href="quick_view.html"></a></li>
-																			<li><a class="link-wishlist" href="wishlist.html"></a>
-																			</li>
+																			<li><a class="link-wishlist"
+																				href="wishlist.html"></a></li>
 																			<li><a class="link-compare" href="compare.html"></a>
 																			</li>
 																		</ul>
@@ -116,9 +119,9 @@
 															<div class="item-info">
 																<div class="info-inner">
 																	<div class="item-title">
-																		<a href="${pageContext.request.contextPath}/product_detail/${remai.gid}">${remai.goodsName}</a>
+																		<a
+																			href="${pageContext.request.contextPath}/product_detail/${remai.gid}">${remai.goodsName}</a>
 																	</div>
-																	<div class="brand">Datsun</div>
 																	<div class="rating">
 																		<div class="ratings">
 																			<div class="rating-box">
@@ -138,11 +141,105 @@
 																				</span>
 																			</div>
 																		</div>
+																		<c:choose>
+																			<c:when test="${!empty loginer }">
+																				<div class="action">
+																					<a
+																						href="${pageContext.request.contextPath}/addcart/${remai.gid}">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart"
+																							goodsid="${remai.gid}">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</a>
+																				</div>
+																			</c:when>
+																			<c:otherwise>
+																				<div class="dlcart">
+																					<div class="action">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</div>
+																				</div>
+																			</c:otherwise>
+																		</c:choose>
+
+																	</div>
+																</div>
+															</div>
+														</div> <!-- End  Item inner-->
+													</li>
+												</c:forEach>
+											</ul>
+										</div>
+									</div>
+									<!-- 热卖推荐 -->
+									<!-- 新品推荐 -->
+									<div class="tab-panel " id="tab-2">
+										<div class="category-products">
+											<ul class="products-grid">
+												<c:forEach var="xinpin" items="${xinpinList }"
+													varStatus="status">
+													<li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
+														<div class="item-inner">
+															<div class="item-img">
+																<div class="item-img-info">
+																	<a class="product-image"
+																		href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
+																		<img alt=""
+																		src="${pageContext.request.contextPath}/statics/products-images/${xinpin.goodsPhoto }">
+																	</a>
+
+																	<div class="box-hover">
+																		<ul class="add-to-links">
+																			<li><a class="link-quickview"
+																				href="quick_view.html"></a></li>
+																			<li><a class="link-wishlist"
+																				href="wishlist.html"></a></li>
+																			<li><a class="link-compare" href="compare.html"></a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="item-info">
+																<div class="info-inner">
+																	<div class="item-title">
+																		<a
+																			href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">${xinpin.goodsName }</a>
+																	</div>
+																	<div class="rating">
+																		<div class="ratings">
+																			<div class="rating-box">
+																				<div style="width: 80%" class="rating"></div>
+																			</div>
+																			<p class="rating-links">
+																				<a href="#">1 Review(s)</a> <span class="separator">|</span>
+																				<a href="#">Add Review</a>
+																			</p>
+																		</div>
+																	</div>
+																	<div class="item-content">
+																		<div class="item-price">
+																			<div class="price-box">
+																				<span class="regular-price"> <span
+																					class="price">￥${xinpin.goodsPrice }</span>
+																				</span>
+																			</div>
+																		</div>
 																		<div class="action">
-																			<button class="button btn-cart" type="button" title=""
-																				data-original-title="Add to Cart">
-																				<i class="fa fa-shopping-basket"></i>
-																			</button>
+																			<a
+																				href="${pageContext.request.contextPath}/addcart/${xinpin.gid}">
+																				<button id="cart" class="button btn-cart"
+																					type="button" title=""
+																					data-original-title="Add to Cart">
+																					<i class="fa fa-shopping-basket"></i>
+																				</button>
+																			</a>
 																		</div>
 																	</div>
 																</div>
@@ -153,92 +250,29 @@
 											</ul>
 										</div>
 									</div>
-								<!-- 热卖推荐 -->
-								<!-- 新品推荐 -->
-									<div class="tab-panel " id="tab-2">
-										<div class="category-products">
-											<ul class="products-grid">
-											<c:forEach var="xinpin" items="${xinpinList }" varStatus="status">
-												<li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
-													<div class="item-inner">
-														<div class="item-img">
-															<div class="item-img-info">
-																<a class="product-image" href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
-																	<img alt="" src="${pageContext.request.contextPath}/statics/products-images/${xinpin.goodsPhoto }">
-																</a>
-
-																<div class="box-hover">
-																	<ul class="add-to-links">
-																		<li><a class="link-quickview"
-																			href="quick_view.html"></a></li>
-																		<li><a class="link-wishlist" href="wishlist.html"></a>
-																		</li>
-																		<li><a class="link-compare" href="compare.html"></a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-														<div class="item-info">
-															<div class="info-inner">
-																<div class="item-title">
-																	<a href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">${xinpin.goodsName }</a>
-																</div>
-																<div class="rating">
-																	<div class="ratings">
-																		<div class="rating-box">
-																			<div style="width: 80%" class="rating"></div>
-																		</div>
-																		<p class="rating-links">
-																			<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																			<a href="#">Add Review</a>
-																		</p>
-																	</div>
-																</div>
-																<div class="item-content">
-																	<div class="item-price">
-																		<div class="price-box">
-																			<span class="regular-price"> <span
-																				class="price">￥${xinpin.goodsPrice }</span>
-																			</span>
-																		</div>
-																	</div>
-																	<div class="action">
-																		<button class="button btn-cart" type="button" title=""
-																			data-original-title="Add to Cart">
-																			<i class="fa fa-shopping-basket"></i>
-																		</button>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div> <!-- End  Item inner-->
-												</li>
-											</c:forEach>	
-											</ul>
-										</div>
-									</div>
-								<!-- 新品推荐 -->
-								<!-- 今日特惠 -->
+									<!-- 新品推荐 -->
+									<!-- 今日特惠 -->
 									<div class="tab-panel " id="tab-3">
 										<div class="category-products">
 											<ul class="products-grid">
-												<c:forEach var="tehui" items="${tehuiList }" varStatus="status">
+												<c:forEach var="tehui" items="${tehuiList }"
+													varStatus="status">
 													<li class="item col-lg-3 col-md-3 col-sm-3 col-xs-6">
 														<div class="item-inner">
 															<div class="item-img">
 																<div class="item-img-info">
 																	<a class="product-image" title="Retis lapen casen"
-																		href="${pageContext.request.contextPath}/product_detail/${tehui.gid }"> <img alt=""
+																		href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">
+																		<img alt=""
 																		src="${pageContext.request.contextPath}/statics/products-images/${tehui.goodsPhoto}">
 																	</a>
-	
+
 																	<div class="box-hover">
 																		<ul class="add-to-links">
 																			<li><a class="link-quickview"
 																				href="quick_view.html"></a></li>
-																			<li><a class="link-wishlist" href="wishlist.html"></a>
-																			</li>
+																			<li><a class="link-wishlist"
+																				href="wishlist.html"></a></li>
 																			<li><a class="link-compare" href="compare.html"></a>
 																			</li>
 																		</ul>
@@ -248,7 +282,8 @@
 															<div class="item-info">
 																<div class="info-inner">
 																	<div class="item-title">
-																		<a title="Retis lapen casen" href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">${tehui.goodsName }</a>
+																		<a title="Retis lapen casen"
+																			href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">${tehui.goodsName }</a>
 																	</div>
 																	<div class="rating">
 																		<div class="ratings">
@@ -270,10 +305,14 @@
 																			</div>
 																		</div>
 																		<div class="action">
-																			<button class="button btn-cart" type="button" title=""
-																				data-original-title="Add to Cart">
-																				<i class="fa fa-shopping-basket"></i>
-																			</button>
+																			<a
+																				href="${pageContext.request.contextPath}/addcart/${tehui.gid}">
+																				<button id="cart" class="button btn-cart"
+																					type="button" title=""
+																					data-original-title="Add to Cart">
+																					<i class="fa fa-shopping-basket"></i>
+																				</button>
+																			</a>
 																		</div>
 																	</div>
 																</div>
@@ -284,7 +323,7 @@
 											</ul>
 										</div>
 									</div>
-								<!-- 今日特惠 -->
+									<!-- 今日特惠 -->
 								</div>
 							</div>
 						</div>
@@ -297,15 +336,20 @@
 				<div class="row">
 					<div
 						class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-						<img src="${pageContext.request.contextPath}/statics/images/watch.jpg" alt="">
+						<img
+							src="${pageContext.request.contextPath}/statics/images/watch.jpg"
+							alt="">
 					</div>
-					<div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-						<img src="${pageContext.request.contextPath}/statics/images/shoes-banner.jpg" alt=""> 
+					<div
+						class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+						<img
+							src="${pageContext.request.contextPath}/statics/images/shoes-banner.jpg"
+							alt="">
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- 当天交易 -->
 		<section class="deals-block">
 			<div class="container">
@@ -457,7 +501,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<!-- 最畅销 -->
 		<div class="container">
 			<div class="bestsell-pro">
@@ -465,7 +509,7 @@
 					<div class="slider-items-products">
 						<div class="bestsell-block">
 							<div class="block-title">
-								<h2> </h2>
+								<h2></h2>
 							</div>
 							<div id="bestsell-slider"
 								class="product-flexslider hidden-buttons">
@@ -476,7 +520,8 @@
 											<div class="item-img">
 												<div class="item-img-info">
 													<a class="product-image" title="Retis lapen casen"
-														href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }"> <img alt=""
+														href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
+														<img alt=""
 														src="${pageContext.request.contextPath}/statics/products-images/product12.jpg">
 													</a>
 													<div class="new-label new-top-left">new</div>
@@ -651,7 +696,7 @@
 												<div class="item-img-info">
 													<a class="product-image" title="Retis lapen casen"
 														href="product_detail.html"> <img alt=""
-														src="products-images/product6.jpg">
+														src="${pageContext.request.contextPath}/statics/products-images/product6.jpg">
 													</a>
 													<div class="new-label new-top-left">new</div>
 													<div class="box-hover">
@@ -882,17 +927,13 @@
 			</div>
 		</div>
 		<!-- Latest Blog -->
- 	<!-- 订阅电子报 -->
-	 	<section class="home-articles spacer-medium">
+		<!-- 订阅电子报 -->
+		<section class="home-articles spacer-medium">
 			<div class="container css-grid--columns-2">
 				<div class="column-left">
-
-
-
-
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="images/Sophie_editorail-16_500x.jpg"
+							<img src="${pageContext.request.contextPath}/statics/images/Sophie_editorail-16_500x.jpg"
 								class="parallax-child--second" alt="article image">
 						</div>
 						<div class="article-home__content">
@@ -904,13 +945,9 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="images/drake_500x.jpg" class="parallax-child--second"
+							<img src="${pageContext.request.contextPath}/statics/images/drake_500x.jpg" class="parallax-child--second"
 								alt="article image">
 						</div>
 						<div class="article-home__content">
@@ -922,19 +959,11 @@
 							</div>
 						</div>
 					</div>
-
-
-
 				</div>
-
 				<div class="column-right">
-
-
-
-
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="images/BLOG_2_square_1000x.jpg"
+							<img src="${pageContext.request.contextPath}/statics/images/BLOG_2_square_1000x.jpg"
 								class="parallax-child--second" alt="article image">
 						</div>
 						<div class="article-home__content">
@@ -946,13 +975,10 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
-
-		</section> 
-	<!-- 订阅电子报 -->
+		</section>
+		<!-- 订阅电子报 -->
 		<!-- End Latest Blog -->
 		<!-- Footer -->
 		<%@ include file="common/footer.jsp"%>
@@ -1060,6 +1086,13 @@
 
 		var iid1 = "countbox_1";
 		CountBack_slider(gsecs1, "countbox_1", 1);
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$(".dlcart").click(function() {
+				alert("请先登录")
+			})
+		})
 	</script>
 </body>
 </html>

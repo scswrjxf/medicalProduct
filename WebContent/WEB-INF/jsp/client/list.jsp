@@ -11,7 +11,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
-<title>商品展示页面(竖版)</title>
+<title>全部商品</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -136,10 +136,11 @@
               <ol class="products-list" id="products-list">
               <c:forEach items="${goods}" var="g">
                 <li class="item first">
-                  <div class="product-image"> <a href="product_detail.jsp" title="HTC Rhyme Sense"> <img class="small-image" src="${pageContext.request.contextPath}/statics/file/${g.goodsPhoto}" alt="HTC Rhyme Sense"> </a>
+                  <div class="product-image"> <a href="${pageContext.request.contextPath}/product_detail/${g.gid}" title="HTC Rhyme Sense"> 
+                  <img class="small-image" src="${pageContext.request.contextPath}/statics/file/${g.goodsPhoto}" alt="HTC Rhyme Sense"> </a>
                   </div>
                   <div class="product-shop">
-                    <h2 class="product-name"><a href="product_detail.jsp" title="HTC Rhyme Sense">${g.goodsName}</a></h2>
+                    <h2 class="product-name"><a href="${pageContext.request.contextPath}/product_detail/${g.gid}" title="HTC Rhyme Sense">${g.goodsName}</a></h2>
                     <div class="ratings">
                       <div class="rating-box">
                         <div style="width:50%" class="rating"></div>
@@ -154,9 +155,24 @@
                       <p class="old-price"> <span class="price-label"></span> <span class="price"> $442.99 </span> </p>
                       <p class="special-price"> <span class="price-label"></span> <span class="price">${g.goodsPrice} </span> </p>
                     </div>
-                    <div class="actions">
-                      <button class="button btn-cart ajx-cart" title="Add to Cart" type="button"><span>Add to Cart</span></button>
-                      <span class="add-to-links"> <a title="Add to Wishlist" class="button link-wishlist" href="wishlist.jsp"></a> <a title="Add to Compare" class="button link-compare" href="compare.jsp"></a> </span> </div>
+                    <div class="actions"> 
+                    <c:choose>
+	                    <c:when test="${!empty loginer }">
+	                    <a href="${pageContext.request.contextPath}/addcartlist/${g.gid}">
+	                     <button class="button btn-cart ajx-cart" title="添加到购物车" type="button"><span>添加到购物车</span></button>
+	                	</a>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<div class="dlcart">
+	                		<button class="button btn-cart ajx-cart" title="添加到购物车" type="button"><span>添加到购物车</span></button>
+	                		</div>
+	                	</c:otherwise>
+                 	</c:choose>
+                 <!--      <span class="add-to-links"> 
+                      	<a title="加入收藏" class="button link-wishlist" href="wishlist.jsp"></a>  
+                      </span> 
+                 -->
+                    </div>
                   </div>
                 </li>
                 </c:forEach>
@@ -408,5 +424,12 @@
 
 <script src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script> 
 <script src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".dlcart").click(function(){
+		alert("请先登录")
+	})
+})	
+</script>
 </body>
 </html>

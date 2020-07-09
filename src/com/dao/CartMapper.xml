@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CartMapper">
+	<resultMap type="Goods" id="goodsMap">
+		<id property="gid" column="gid"/>
+		<association property="categoryId" javaType="Category">
+			<id property="categoryId" column="categoryId"/>
+		</association>
+	</resultMap>
+	<!-- 根据goodsId获取商品信息 -->
+	<select id="findGoodsByGoodsId" resultMap="goodsMap">
+	select goods.gid gid,category.categoryId cid,goodsName,goodsPhoto,goodsPrice,goodsDesc,inputDate,
+			goodsNumber,category from goods left join category 
+			on goods.categoryId=category.categoryId where goods.gid=#{goodsId}
+	</select>
+	<!-- 根据商品名称和用户昵称查找cart商品 -->
+	<select id="findCartByGoodsName" parameterType="string" resultType="Cart">
+		select * from cart where goodsName=#{goodsName} and userAlice=#{userAlice}
+	</select>
+	<!-- 根据goodsName更新cart数量 -->
+	<update id="updateCartNumByGoodsName">
+		update cart set goodsNumber=goodsNumber+1 where cid=#{cid}
+	</update>
+	<!-- 添加cart -->
+	<insert id="addNewCart">
+		insert into cart(goodsId,goodsName,goodsPrice,goodsNumber,gPhoto,
+			userAlice) 
+			values(#{goodsId},#{goodsName},#{goodsPrice},1,#{gPhoto},
+			#{userAlice})
+	</insert>
+	<!-- 查找所有cart -->
+	<select id="findAllCart" resultType="Cart">
+		select * from cart where userAlice=#{userAlice}
+	</select>
+	<update id="updateNumByGoodsName">
+		update cart set goodsNumber=#{goodsNumber} where cid=#{cid}
+	</update>
+	<delete id="delCartByCid" parameterType="Integer">
+		delete from cart where cid=#{cid}
+	</delete>
+	<delete id="delCart" parameterType="String">
+		delete from cart where userAlice=#{userAlice}
+	</delete>
+	<!-- 搜索 -->
+	<select id="findGoodsByGoodsName" resultType="Goods">
+		select * from goods where goodsName  like concat('%',#{goodsName},'%')
+	</select>
+	<!-- 生成订单 -->
+	<insert id="addNewOrder">
+		insert into orders(orderName,total,uid,code,orderDate) 
+			values(#{orderName},#{total},#{uid},#{code},#{orderDate})
+	</insert>
+	<select id="findOrderByUserId" resultType="Orders">
+		select * from orders where uid=#{userId}
+	</select>
+	<update id="orderPass">
+		update orders set orderStatus=2 where oid=#{oid}
+	</update>
+	<update id="updateUsersByUserId" parameterType="User">
+		update user set userAlice=#{userAlice},userEmail=#{userEmail},userSex=#{userSex}
+			where userId=#{userId}
+	</update>
+	<update id="updateUserPhotoByuserId">
+		update user set userPhoto=#{userPhoto} where userId=#{userId}
+	</update>
+</mapper>

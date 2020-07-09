@@ -12,7 +12,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
-<title>商品展示页面(网格)</title>
+<title>商品分类</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -141,7 +141,9 @@
                 <li class="item col-lg-4 col-md-4 col-sm-4 col-xs-6">
                   <div class="item-inner">
                           <div class="item-img">
-                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.jsp"> <img alt="Retis lapen casen" src="${pageContext.request.contextPath}/statics/file/${g.goodsPhoto}"> </a>
+                            <div class="item-img-info"> 
+                            <a class="product-image" title="Retis lapen casen" href="${pageContext.request.contextPath}/product_detail/${g.gid}"> 
+                            <img alt="Retis lapen casen" src="${pageContext.request.contextPath}/statics/file/${g.goodsPhoto}"> </a>
                               <div class="sale-label sale-top-right">- 40% sale</div>
                               <div class="box-hover">
                                 <ul class="add-to-links">
@@ -154,7 +156,7 @@
                           </div>
                           <div class="item-info">
                             <div class="info-inner">
-                              <div class="item-title"> <a title="Retis lapen casen" href="product_detail.jsp">${g.goodsName}</a> </div>
+                              <div class="item-title"> <a title="Retis lapen casen" href="${pageContext.request.contextPath}/product_detail/${g.gid}">${g.goodsName}</a> </div>
                               <div class="brand">Datsun</div>
                               <div class="rating">
                                 <div class="ratings">
@@ -168,9 +170,30 @@
                                 <div class="item-price">
                                   <div class="price-box"> <span class="regular-price"> <span class="price">${g.goodsPrice}</span> </span> </div>
                                 </div>
-                                <div class="action">
-                                  <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><i class="fa fa-shopping-basket"></i></button>
-                                </div>
+                                
+                                  <c:choose>
+									<c:when test="${!empty loginer }">
+										<div class="action">
+											<a href="${pageContext.request.contextPath}/addcartgrid?goodsId=${g.gid}&categoryId=${g.categoryId.categoryId}">
+											<button id="cart" class="button btn-cart" type="button" title=""
+												data-original-title="Add to Cart">
+												<i class="fa fa-shopping-basket"></i>
+											</button>
+											</a>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="dlcart">
+										<div class="action">
+											<button id="cart" class="button btn-cart" type="button" title=""
+												data-original-title="Add to Cart" >
+												<i class="fa fa-shopping-basket"></i>
+											</button>
+										 </div>
+										 </div>
+									</c:otherwise>
+								</c:choose>
+                               
                               </div>
                             </div>
                           </div>
@@ -309,8 +332,6 @@
                       </div>
                     </div>
                     <!-- End Item -->
-                    
-           
                   </div>
                 </div>
               </div>
@@ -521,5 +542,12 @@
 <script src="${pageContext.request.contextPath}/statics/js/common.js"></script> 
 <script src="${pageContext.request.contextPath}/statics/js/owl.carousel.min.js"></script> 
 <script src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".dlcart").click(function(){
+		alert("请先登录")
+	})
+})	
+</script>
 </body>
 </html>

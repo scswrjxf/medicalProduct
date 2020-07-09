@@ -28,4 +28,11 @@
 	<delete id="delCollectByUidAndCid">
 		delete from collect where collectUid=#{userId} and goodsId=#{gid}
 	</delete>
+	<!-- 根据 userId 查找收藏 --> 
+	<select id="findAllCollectById" resultMap="collectMap">
+		select cid,user.*,goods.* from collect 
+		left join user on collect.collectUid=user.userId
+		left join goods on collect.goodsId=goods.gid  
+		where user.userId=#{userId}  
+	</select>
 </mapper>

@@ -23,15 +23,15 @@ public class CommentsServiceImplXF implements CommentsServiceXF {
 	@Override
 	public Comment findCommentById(Integer commentId) {
 		Comment comment= commentsMapperXF.findCommentById(commentId);
-//		// 对评论内容进行解码处理(采用UTF-8编码格式)
-//		String meg = null;
-//		try {
-//			// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
-//			meg = URLDecoder.decode(comment.getCommentMessage(), "utf-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		} 
-//		comment.setCommentMessage(meg);
+		// 对评论内容进行解码处理(采用UTF-8编码格式)
+		String meg = null;
+		try {
+			// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
+			meg = URLDecoder.decode(comment.getCommentMessage(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 
+		comment.setCommentMessage(meg);
 		return comment;
 	}
 	
@@ -45,20 +45,35 @@ public class CommentsServiceImplXF implements CommentsServiceXF {
 	@Override
 	public List<Comment> findAllCommentsByGoodsName(String goodsName) {
 		List<Comment> comments=commentsMapperXF.findAllCommentsByGoodsName(goodsName);
-//		// 对评论内容进行解码处理(采用UTF-8编码格式)
-//		String meg = null;
-//		for(Comment com:comments) {
-//			try {
-//				// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
-//				meg = URLDecoder.decode(com.getCommentMessage(), "utf-8");
-//				// 屏蔽掉敏感内容
-//				meg = meg.replaceAll("(共产党)|(操)|()","*");
-//			} catch (UnsupportedEncodingException e) {
-//				e.printStackTrace();
-//			} 
-//			com.setCommentMessage(meg);
-//		}	
+		// 对评论内容进行解码处理(采用UTF-8编码格式)
+		String meg = null;
+		for(Comment com:comments) {
+			try {
+				// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
+				meg = URLDecoder.decode(com.getCommentMessage(), "utf-8");
+				// 屏蔽掉敏感内容
+				meg = meg.replaceAll("(共产党)|(操)","*");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 
+			com.setCommentMessage(meg);
+		}	
 		return comments;
+	}
+
+	// 添加评论
+	@Override
+	public int addNewComment(Comment comment) {
+		// 对评论内容进行编码处理(采用UTF-8编码格式)
+		String meg = null;
+		try {
+			// 对内容进行解码处理(采用UTF-8编码格式)
+			meg = URLEncoder.encode(comment.getCommentMessage(), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		comment.setCommentMessage(meg);
+		return commentsMapperXF.addNewComment(comment);
 	}  
   
 }

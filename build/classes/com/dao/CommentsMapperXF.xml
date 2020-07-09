@@ -42,4 +42,9 @@
 		where comment.goodsName=#{goodsName} and 
 		commentIspass=1 order by commentDate DESC 
 	</select> 
+	<!-- 添加新评论 -->
+	<insert id="addNewComment" parameterType="Comment">
+		insert into comment(commentMessage,uId,commentDate,goodsName,commentIspass)
+		 values(#{commentMessage},#{uId.userId},#{commentDate},#{goodsName.goodsName},0)
+	</insert>
 </mapper>

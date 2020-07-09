@@ -2,19 +2,22 @@ package com.pojo;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Goods {
 	private Integer gid;
 	private String goodsName;
 	private String goodsPhoto;
-	private String goodsPrice;
+	private Integer goodsPrice;
 	private String goodsDesc;
+	@JSONField(format="yyyy-MM-dd")
 	private Date inputDate;
 	private Integer goodsNumber;
 	private Category categoryId;
 	public Goods() {
 		super();
 	}
-	public Goods(Integer gid, String goodsName, String goodsPhoto, String goodsPrice, String goodsDesc, Date inputDate,
+	public Goods(Integer gid, String goodsName, String goodsPhoto, Integer goodsPrice, String goodsDesc, Date inputDate,
 			Integer goodsNumber, Category categoryId) {
 		super();
 		this.gid = gid;
@@ -44,10 +47,10 @@ public class Goods {
 	public void setGoodsPhoto(String goodsPhoto) {
 		this.goodsPhoto = goodsPhoto;
 	}
-	public String getGoodsPrice() {
+	public Integer getGoodsPrice() {
 		return goodsPrice;
 	}
-	public void setGoodsPrice(String goodsPrice) {
+	public void setGoodsPrice(Integer goodsPrice) {
 		this.goodsPrice = goodsPrice;
 	}
 	public String getGoodsDesc() {

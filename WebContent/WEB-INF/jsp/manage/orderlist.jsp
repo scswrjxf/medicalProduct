@@ -5,22 +5,12 @@
             <div class="location">
                 <strong>你现在所在的位置是:</strong>
                 <span>订单管理页面</span>
-            </div>
-            <div class="search">
-           		<form method="post" action="">
-					<input name="method" value="query" class="input-text" type="hidden">
-					 <span>订单编号：</span>
-					 <input name="queryname" class="input-text"	type="text" value="">
-					 
-					 <input	value="查 询" type="submit" id="searchbutton">
-					 
-				</form>
-            </div>
+            </div> 
             <!--订单表-->
             <table class="providerTable" cellpadding="0" cellspacing="0"> 
                 <tr class="firstTr">
                     <th width="20%">订单编号</th> 
-                    <th width="20%">商品名称</th>
+                    <th width="20%">订单内容</th>
                     <th width="20%">收货人</th>
                     <th width="10%">订单状态</th>
                     <th width="20%">下单时间</th> 
@@ -32,7 +22,7 @@
 						<span>${orders.code }</span>
 						</td>
 						<td>
-						<span>${orders.goodsName.goodsName }</span>
+						<span>${orders.orderName}</span>
 						</td>
 						<td>
 							<span>${orders.uId.userId }</span>
@@ -48,7 +38,8 @@
 							<span><fmt:formatDate value="${orders.orderDate }" pattern="yyyy年MM月dd日 HH:mm:ss"/></span> 
 						</td> 
 						<td>
-							<span><a class="viewUser" href="${pageContext.request.contextPath }/serverXF/ordersview/${orders.oid }"><img src="${pageContext.request.contextPath }/statics/images/read.png" alt="查看" title="查看"/></a></span>
+							<span><a class="viewUser" href="${pageContext.request.contextPath }/serverXF/orderview/${orders.oid }"><img src="${pageContext.request.contextPath }/statics/images/read.png" alt="查看" title="查看"/></a></span>
+							<span><a class="modifyUser" href="${pageContext.request.contextPath }/serverXF/orderverify/${orders.oid}"><img src="${pageContext.request.contextPath }/statics/images/xiugai.png" alt="修改" title="修改"/></a></span>
 							<span><a class="deleteOreder" href="javascript:;" oid=${orders.oid } code=${orders.code }><img src="${pageContext.request.contextPath }/statics/images/schu.png" alt="删除" title="删除"/></a></span>
 						</td>
 					</tr>
@@ -93,7 +84,7 @@ $(function(){
 	$("body").on("click",".deleteOreder",function(){
 		ordersObj = $(this);
 		changeDLGContent(
-				"你确定要删除商品【"+ordersObj.attr("code")+"】吗？",
+				"你确定要删除订单【"+ordersObj.attr("code")+"】吗？",
 				ordersObj.attr("oid"));
 		openYesOrNoDLG();
 	});

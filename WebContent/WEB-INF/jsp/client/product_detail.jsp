@@ -198,29 +198,41 @@
 															</button>
 														</div>
 													</div>
-													<button onClick="productAddToCartForm.submit(this)"
-														class="button btn-cart" title="Add to Cart" type="button">加入购物车</button>
+													 <c:choose>
+									                    <c:when test="${!empty loginer }">
+									                    <a href="${pageContext.request.contextPath}/addcartP/${goodInfor.gid}">
+									                     <button class="button btn-cart ajx-cart" title="加入购物车" type="button"><span>加入购物车</span></button>
+									                	</a>
+									                	</c:when>
+									                	<c:otherwise>
+									                		<div class="dlcart">
+									                		<button class="button btn-cart ajx-cart" title="加入购物车" type="button"><span>加入购物车</span></button>
+									                		</div>
+									                	</c:otherwise>
+								                 	</c:choose>
 												</div>
 
 											</div>
 
 											<div class="email-addto-box">
 												<ul class="add-to-links">
-												<c:if test="${!empty loginer }">
-												 	<c:choose>
-												 		<c:when test="${empty coll }">
-														 	<li><a class="link-wishlist" href="${pageContext.request.contextPath}/clientXF/add_new_collect/${goodInfor.gid}">
-														 		<strong>加入收藏</strong></a>
-														 	</li>
-												 		</c:when> 
-												 		<c:otherwise>
-					 										<li><a class="link-wishlist" href="${pageContext.request.contextPath}/clientXF/del_collect/${goodInfor.gid}">
-					 											<strong>取消收藏</strong></a>
-					 										</li>
-					 									</c:otherwise>
-												 	</c:choose>
-												 </c:if> 
-												</ul> 
+													<c:if test="${!empty loginer }">
+														<c:choose>
+															<c:when test="${empty coll }">
+																<li><a class="link-wishlist"
+																	href="${pageContext.request.contextPath}/clientXF/add_new_collect/${goodInfor.gid}">
+																		<strong>加入收藏</strong>
+																</a></li>
+															</c:when>
+															<c:otherwise>
+																<li><a class="link-wishlist"
+																	href="${pageContext.request.contextPath}/clientXF/del_collect/${goodInfor.gid}">
+																		<strong>取消收藏</strong>
+																</a></li>
+															</c:otherwise>
+														</c:choose>
+													</c:if>
+												</ul>
 											</div>
 											<div class="social">
 												<ul class="link">
@@ -300,47 +312,43 @@
 														<div>
 															<div class="comment-respond">
 																<span class="comment-reply-title">添加评论</span>
-																<form action="#" method="post" class="comment-form"
-																	novalidate>
-																	<p class="comment-notes">
-																		<span id="email-notes">您的电子邮件地址不会被公开。</span>必填字段已标记<span
-																			class="required">*</span>
-																	</p>
-																	<div class="comment-form-rating">
-																		<label id="rating">您的评分</label>
-																		<p class="stars">
-																			<span> <a class="star-1" href="#">1</a> <a
-																				class="star-2" href="#">2</a> <a class="star-3"
-																				href="#">3</a> <a class="star-4" href="#">4</a> <a
-																				class="star-5" href="#">5</a>
-																			</span>
-																		</p>
-																	</div>
-																	<p class="comment-form-author">
-																		<label for="author">昵称 <span class="required">*</span></label>
-																		<input id="author" name="author" type="text" value=""
-																			size="30" required>
-																	</p>
-																	<p class="comment-form-email">
-																		<label for="email">邮箱 <span class="required">*</span></label>
-																		<input id="email" name="email" type="email" value=""
-																			size="30" required>
-																	</p>
-																	<p class="comment-form-comment">
-																		<label>您的评论<span class="required">*</span></label>
-																		<textarea id="comment" name="comment" cols="45"
-																			rows="8" required>
+																<c:choose>
+																	<c:when test="${empty loginer }">
+																		<center>
+																			<p>
+																				登录后才能添加评论<a
+																					href="${pageContext.request.contextPath}/login"
+																					style="margin-left: 20px;">去登录？</a>
+																			</p>
+																		</center>
+																	</c:when>
+																	<c:otherwise>
+																		<form action="${pageContext.request.contextPath}/clientXF/add_comment/${goodInfor.gid}" method="post" class="comment-form"
+																			novalidate>
+																	<!--		<p class="comment-notes">
+																				<span id="email-notes">您的电子邮件地址不会被公开。</span>必填字段已标记<span
+																					class="required">*</span>
+																			</p>  -->
+																			<p class="comment-form-comment">
+																				<label>您的评论<span class="required">*</span></label>
+																				<textarea id="comment" name="commentMessage"
+																					cols="45" rows="8" required>
 																		</textarea>
-																	</p>
-																	<p class="form-submit">
-																		<input name="submit" type="submit" id="submit"
-																			class="submit" value="提交">
-																	</p>
-																</form>
+																			</p>
+																			<p class="form-submit">
+																				<input name="submit" type="submit" id="submit"
+																					class="submit" value="提交评论">
+																			</p>
+																		</form>
+																	</c:otherwise>
+																</c:choose>
+
+
 															</div>
 															<!-- #respond -->
 														</div>
 													</div>
+
 												</div>
 											</div>
 											<!-- 自定义标签 -->
@@ -1279,8 +1287,64 @@
 	<!-- mobile-menu -->
 	<%@ include file="common/mobile_menu.jsp"%>
 
+	<script>
+	var E = window.wangEditor;
+	var editor = new E('#editor');
+	// 自定义菜单配置
+	editor.customConfig.menus = [
+    	'head',// 标题
+   	 	'bold',// 加粗
+    	'fontSize',//字号
+    	'fontName', //字体
+    	'italic',//倾斜
+    	'underline',//下划线
+    	'strikeThrough',  // 删除线
+    	'foreColor',  // 文字颜色
+    	'backColor',  // 背景颜色
+    	'justify',  // 对齐方式
+    	'emoticon',  // 表情
+    	'image',  // 插入图片
+    	'undo',  // 撤销
+    	'redo'  // 重复
+	];
+	// 自定义配置颜色（字体颜色、背景色）
+	editor.customConfig.colors = [
+'#000000','#eeece0','#1c487f','#4d80bf','#c24f4a','#8baa4a','#7b5ba1','#46acc8','#f9963b'
+	];
+	// 自定义字体
+	editor.customConfig.fontNames = [
+    '宋体','黑体','华文新魏','微软雅黑','Arial','Tahoma','Verdana'
+];
+	// 关闭粘贴样式的过滤
+	editor.customConfig.pasteFilterStyle = true;
+	// 忽略粘贴内容中的图片
+	editor.customConfig.pasteIgnoreImg = true;
+	// 上传图片到服务器
+	editor.customConfig.uploadImgServer = '${pageContext.request.contextPath}/upload';
+	// 隐藏“网络图片”tab
+	editor.customConfig.showLinkImg = false;
+	// 将图片大小限制为 1M
+	editor.customConfig.uploadImgMaxSize = 1 * 1024 * 1024;
+	// 限制一次最多上传 5 张图片
+	editor.customConfig.uploadImgMaxLength = 5;
+	// 监听函数，可使用监听函数在上传图片的不同阶段做相应处理
+	editor.customConfig.uploadImgHooks = {
+		customInsert: function (insertImg, result, editor) {
+    		for(var i in result){
+    			insertImg('${pageContext.request.contextPath}/statics/file/'+result[i]);
+    		}
+		}
+	}
+	editor.create();
+	// 下面的script用于处理提交 
+$(function(){
+ $("form").submit(function(){
+	 // 把富文本框中的内容作为id为ansMessage的值
+	 $("#ansMessage").val(editor.txt.html());
+ });
+});
+</script>
 	<!-- JavaScript -->
-
 	<script
 		src="${pageContext.request.contextPath}/statics/js/wangEditor.min.js"></script>
 	<script type="text/javascript"
@@ -1297,5 +1361,12 @@
 		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/cloud-zoom.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".dlcart").click(function(){
+		alert("请先登录")
+	})
+})	
+</script>
 </body>
 </html>

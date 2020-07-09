@@ -36,6 +36,7 @@
               <li><a href="${pageContext.request.contextPath}/server/categorylist">分类管理</a></li>
               <li><a href="${pageContext.request.contextPath}/server/userlist">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath}/serverXF/commentlist">评论管理</a></li>
+              <li><a href="${pageContext.request.contextPath}/server/touchlist">联系我们</a></li>
               <li><a href="${pageContext.request.contextPath}/server/about_us">关于我们</a></li>
               <li><a href="${pageContext.request.contextPath}/serverXF/pwdmodify">密码修改</a></li>
               <li><a href="${pageContext.request.contextPath}/login_out">退出系统</a></li>

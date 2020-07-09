@@ -3,17 +3,31 @@ package com.pojo;
 import java.util.Date;
 
 public class Orders {
-	private Long oid;
+	private Integer oid;
 	private String code;
-	private Double Total;
-	private Goods goodsName;
+	private Integer total;
+	private String orderName;
 	private Date orderDate;
 	private User uId;
-	private Integer orderStatus;// 订单状态   
-	public Long getOid() {
+	private Integer orderStatus;// 订单状态  
+	public Orders(Integer oid, String code, Integer total, String orderName, Date orderDate, User uId,
+			Integer orderStatus) {
+		super();
+		this.oid = oid;
+		this.code = code;
+		this.total = total;
+		this.orderName = orderName;
+		this.orderDate = orderDate;
+		this.uId = uId;
+		this.orderStatus = orderStatus;
+	}
+	public Orders() {
+		super();
+	}
+	public Integer getOid() {
 		return oid;
 	}
-	public void setOid(Long oid) {
+	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
 	public String getCode() {
@@ -22,17 +36,17 @@ public class Orders {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public Double getTotal() {
-		return Total;
+	public Integer getTotal() {
+		return total;
 	}
-	public void setTotal(Double total) {
-		Total = total;
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
-	public Goods getGoodsName() {
-		return goodsName;
+	public String getOrderName() {
+		return orderName;
 	}
-	public void setGoodsName(Goods goodsName) {
-		this.goodsName = goodsName;
+	public void setOrderName(String orderName) {
+		this.orderName = orderName;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -52,4 +66,6 @@ public class Orders {
 	public void setOrderStatus(Integer orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+	
+	
 }

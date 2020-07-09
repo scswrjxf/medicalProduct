@@ -7,6 +7,10 @@ public interface OrdersServiceXF {
 
 	List<Orders> findAllOrders();
 
-	int delOrder(Long oid);
+	int delOrder(Integer oid);
+
+	Orders findOrderById(Integer oid);
+
+	int updeteorderStatusById(Integer oid, Integer orderStatus);
 
 }
