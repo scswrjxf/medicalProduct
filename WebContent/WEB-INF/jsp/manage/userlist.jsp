@@ -15,7 +15,7 @@
                     <th width="20%">用户头像</th>
                     <th width="20%">邮箱</th>
                     <th width="10%">用户角色</th>
-                    <th width="10%">是否通过审核</th>
+                 <!--  <th width="10%">是否通过审核</th> -->  
                     <th width="20%">操作</th>
                 </tr>
                 <c:forEach var="users" items="${userList }" varStatus="status">
@@ -43,15 +43,15 @@
 							</span>
 							
 						</td>
-						<td>
+			<!-- 			<td>
 							<span>
 								<c:if test="${users.isPass==0}">未审核</c:if>
 								<c:if test="${users.isPass==1}">已审核</c:if>
 							</span>
-						</td>
+						</td> -->
 						<td>
 						<span><a class="viewUser" href="${pageContext.request.contextPath }/server/userview/${users.userId }"><img src="${pageContext.request.contextPath }/statics/images/read.png" alt="查看" title="查看"/></a></span>
-						<span><a class="modifyUser" href="${pageContext.request.contextPath }/server/userverify/${users.userId }"><img src="${pageContext.request.contextPath }/statics/images/xiugai.png" alt="审核" title="审核"/></a></span>
+						<!-- <span><a class="modifyUser" href="${pageContext.request.contextPath }/server/userverify/${users.userId }"><img src="${pageContext.request.contextPath }/statics/images/xiugai.png" alt="审核" title="审核"/></a></span> -->
 						</td>
 					</tr>
 				</c:forEach>

@@ -5,7 +5,7 @@
 <mapper namespace="com.dao.GoodsMapper"> 
 	<!-- 查询所有的商品信息 -->
 	<select id="findAllGoods" resultType="Goods">
-		select * from Goods
+		select * from Goods order by inputDate desc
 	</select>
 	<resultMap type="Goods" id="goodsMap">
 		<id property="gid" column="gid"/>

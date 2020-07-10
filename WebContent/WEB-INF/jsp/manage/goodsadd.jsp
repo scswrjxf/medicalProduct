@@ -12,28 +12,28 @@
 			action="${pageContext.request.contextPath}/server/goodsnewadd"
 			enctype="multipart/form-data">
 			<!--div的class 为error是验证错误，ok是验证成功-->
-			<div class="error">${error }</div>
+			<div class="error" style="color: red;">${error }</div>
 			<div>
 				<label for="goodsName">商品名称：</label> <input type="text"
-					name="goodsName" id="goodsName" value="">
+					name="goodsName" id="goodsName" value="" required="required">
 				<!-- 放置提示信息 -->
 				<font color="red"></font>
 			</div>
 			<div>
 				<label for="goodsPrice">商品价格：</label> <input type="text"
-					name="goodsPrice" id="goodsPrice" value=""> <font
+					name="goodsPrice" id="goodsPrice" value="" required="required"> <font
 					color="red"></font>
 			</div>
 			<div>
 
 				<label for="goodsDesc">商品描述：</label>
-				<textarea name="goodsDesc" id="goodsDesc" rows="10" cols="39"></textarea>
+				<textarea name="goodsDesc" id="goodsDesc" rows="10" cols="39" required="required"></textarea>
 				<font color="red"></font>
 
 			</div>
 			<div>
 				<label for="goodsNumber">商品数量：</label> <input type="text"
-					type="text" name="goodsNumber" id="goodsNumber" value=""> <font
+					type="text" name="goodsNumber" id="goodsNumber" value="" required="required"> <font
 					color="red"></font>
 			</div>
 			<div>
@@ -71,27 +71,27 @@
 	$(function() {
 		// 验证商品名称唯一性
 		// 为 id 为 goodsName 的输入框添加 blur 事件，发送 ajax 请求到控制器
-		$("#goodsName").blur(function() {
-			// 获取 goodsName 的值
-			var goodsNameVal = $(this).val();
-			// 发送异步请求，把获取的值传递到控制器
-			$.ajax({
-				type : "POST",
-				url : "${pageContext.request.contextPath}/server/ucexist",
-				data : "goodsName=" + goodsNameVal,
-				success : function(msg) {
+//		$("#goodsName").blur(function() {
+//			// 获取 goodsName 的值
+//			var goodsNameVal = $(this).val();
+//			// 发送异步请求，把获取的值传递到控制器
+//			$.ajax({
+//				type : "POST",
+//				url : "${pageContext.request.contextPath}/server/ucexist",
+//				data : "goodsName=" + goodsNameVal,
+//				success : function(msg) {
 
-					if (msg.goodsName == 'exist') {
-						$("#goodsName").next().html("商品已经存在");
-					} else {
-						$("#goodsName").next().html("商品名可以使用");
-					}
-				},
-				error : function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("异常：" + textStatus + errorThrown);
-				}
-			});
-		});
+//					if (msg.goodsName == 'exist') {
+//						$("#goodsName").next().html("商品已经存在");
+//					} else {
+//						$("#goodsName").next().html("商品名可以使用");
+//					}
+//				},
+//				error : function(XMLHttpRequest, textStatus, errorThrown) {
+//					alert("异常：" + textStatus + errorThrown);
+//				}
+//			});
+//		});
 		// 单击 save 按钮，提交表单
 		$("#save").click(function() {
 			// 使得表单提交

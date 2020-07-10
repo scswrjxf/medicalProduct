@@ -7,7 +7,7 @@
 			<div class="row">
 				<!-- Header Language -->
 				<div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 pull-left">
-					<div class="welcome-msg">欢迎访问医疗管理系统！</div>
+					<div class="welcome-msg">欢迎访问医药管理系统！</div>
 				</div>
 				<!-- Header Top Links -->
 				<div
@@ -51,6 +51,8 @@
 												href="${pageContext.request.contextPath}/cartlist">购物车</a> </li>
 											<li role="presentation"><a
 												href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
+											<li role="presentation"><a
+												href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
 											<li role="presentation"><a
 												href="${pageContext.request.contextPath}/orderlist">我的订单</a></li> 
 											<li role="presentation"><a
@@ -194,7 +196,7 @@
 								<i class="fa fa-heartbeat"></i>所有商品分类
 							</h3>
 						</div>
-						<div class="mega-menu-category">
+						<div class="mega-menu-category" style="display: none;">
 							<ul class="nav">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="${pageContext.request.contextPath}/list">
@@ -210,17 +212,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- features box -->
-			<div class="our-features-box hidden-xs">
-				<div class="features-block">
-					<div class="col-lg-9 col-md-9 col-xs-12 col-sm-9 offer-block">
-						<a href="#">New Arrivals</a> <a href="#">Special</a> <a href="#">Value
-							of the day</a> <a href="#">Gift Cards</a> <a href="#">Todays
-							Deals</a> <span>Free Worldwide Delivery</span>
-					</div>
-				</div>
-			</div>
+			</div> 
 		</div>
 	</nav>
 </header>

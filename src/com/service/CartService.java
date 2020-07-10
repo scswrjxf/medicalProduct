@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.pojo.Cart;
+import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.Orders;
 import com.pojo.User;
@@ -43,4 +44,8 @@ public interface CartService {
 	User findUserByUserId(String userId);
 	
 	User findUserByUserAlice(String userAlice);
+	
+	Goods hotGoods();
+	
+	List<Comment> findCommentFive();
 }

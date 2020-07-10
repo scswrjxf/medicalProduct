@@ -64,7 +64,7 @@ public class CartController {
 		User loginer = (User)session.getAttribute("loginer");
 		if(loginer!=null) {
 		// 获取所有的购物车信息
-		List<Cart> cartlist = cartService.findAllCart(loginer.getUserAlice());
+		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
 		mv.addObject("cartlist",cartlist);
 		}
 		//查询用户信息

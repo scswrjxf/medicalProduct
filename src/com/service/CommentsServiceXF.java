@@ -16,4 +16,8 @@ public interface CommentsServiceXF {
 
 	int addNewComment(Comment comment);
 
+	List<Comment> findAllCommentById(String userId);
+
+	int delCommentByUidAndCommentId(String userId, Integer commentId);
+
 }

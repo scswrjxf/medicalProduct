@@ -17,5 +17,10 @@ public interface CommentsMapperXF {
 
 	List<Comment> findAllCommentsByGoodsName(String goodsName);
 
-	int addNewComment(Comment comment);  
+	int addNewComment(Comment comment);
+
+	List<Comment> findAllCommentById(String userId);
+
+	int delCommentByUidAndCommentId(@Param("userId") String userId,
+			@Param("commentId") Integer commentId);  
 }

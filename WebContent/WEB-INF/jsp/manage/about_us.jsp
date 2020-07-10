@@ -7,6 +7,9 @@
 			style="color: black;">关于我们管理页面</span>
 	</div>
 	<div class="providerAdd">
+	<div class="nNote nInformation hideit">
+            <p>${error }</p>
+        </div>
 		<c:forEach items="${about}" var="about">
 			<form id="aboutForm" name="aboutForm" method="post"
 				action="${pageContext.request.contextPath}/server/about">

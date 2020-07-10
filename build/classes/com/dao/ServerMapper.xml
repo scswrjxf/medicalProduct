@@ -25,7 +25,7 @@
 	<select id="findAllGoods" resultMap="goodsMap">
 		select goods.gid gid,category.categoryId cid,goodsName,goodsPhoto,goodsPrice,goodsDesc,inputDate,
 			goodsNumber,category from goods left join category 
-			on goods.categoryId=category.categoryId
+			on goods.categoryId=category.categoryId order by inputDate desc
 	</select>
 	<!-- 根据分类名称查找分类 -->
 	<select id="findCategoryByTitle" parameterType="string" resultType="Category">

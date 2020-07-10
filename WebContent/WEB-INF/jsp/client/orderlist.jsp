@@ -113,14 +113,17 @@
 															<td><fmt:formatDate value="${orderlist.orderDate}"
 																	pattern="yyyy-MM-dd" /></td>
 															<td><span class="price">${orderlist.total }</span></td>
-															<td><em> <c:if
-																		test="${orderlist.orderStatus==0 }">待发货</c:if> <c:if
-																		test="${orderlist.orderStatus==1 }">已发货</c:if> <c:if
-																		test="${orderlist.orderStatus==2 }">已签收</c:if>
+															<td><em> 
+															<c:if test="${orderlist.orderStatus==0 }">待发货</c:if> 
+															<c:if test="${orderlist.orderStatus==1 }">已发货</c:if> 
+															<c:if test="${orderlist.orderStatus==2 }">已签收</c:if>
 															</em></td>
 															<td class="a-center last"><span class="nobr">
-																	<a
-																	href="${pageContext.request.contextPath }/orderPass?oid=${orderlist.oid}">确认收货</a>
+															<c:if test="${orderlist.orderStatus==0}">商品未发货</c:if>
+															<c:if test="${orderlist.orderStatus==1 }">
+																<a href="${pageContext.request.contextPath }/orderPass?oid=${orderlist.oid}">确认收货</a>
+															</c:if>
+															<c:if test="${orderlist.orderStatus==2 }">您已确认收货</c:if>
 															</span></td>
 														</tr>
 													</c:forEach>
@@ -137,15 +140,13 @@
 						<div class="block block-company">
 							<div class="block-content">
 								<ol id="recently-viewed-items">
-									<li class="item odd"><a
-										href="${pageContext.request.contextPath}/cserver/viewuser">用户设置</a></li>
-									<li class="item odd"><a
-										href="${pageContext.request.contextPath}/cartlist">购物车</a></li>
-									<li class="item odd"><a
-										href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/cserver/viewuser">用户设置</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/cartlist">购物车</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
 									<li class="item odd"><strong>我的订单</strong></li>
-									<li class="item odd"><a
-										href="${pageContext.request.contextPath}/clientXF/alter_password">修改密码</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/alter_password">修改密码</a></li>
+									
 								</ol>
 							</div>
 						</div>

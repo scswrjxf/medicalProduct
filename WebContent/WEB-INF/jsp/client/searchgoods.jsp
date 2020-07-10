@@ -11,7 +11,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="#" type="image/x-icon" />
 <link rel="shortcut icon" href="#" type="image/x-icon" />
-<title>商品展示页面(竖版)</title>
+<title>搜索商品</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -47,15 +47,12 @@
           <!-- Breadcrumbs -->
           <div class="breadcrumbs">
             <ul>
-              <li class="home"> <a href="index.jsp" title="Go to Home Page">Home</a> <span>/</span> </li>
-              <li class="category1599"> <a href="grid.jsp" title="">Women</a> <span>/ </span> </li>
-              <li class="category1600"> <a href="grid.jsp" title="">Styliest Bag</a> <span>/</span> </li>
-              <li class="category1601"> <strong>Clutch Handbags</strong> </li>
+              
             </ul>
           </div>
           <!-- Breadcrumbs End -->
           <div>
-            <h2 class="page-heading"> <span class="page-heading-title">Women</span> </h2>
+            <h2 class="page-heading"> <span class="page-heading-title">搜索结果</span> </h2>
           </div>
           <div class="category-description std">
             <div class="slider-items-products">
@@ -65,9 +62,9 @@
                   <!-- Item -->
                   <div class="item"> <a href="#"><img alt="" src="${pageContext.request.contextPath}/statics/images/category-img1.jpg"></a>
                     <div class="cat-img-title cat-bg cat-box">
-                      <div class="small-tag">Season 2018</div>
-                      <h2 class="cat-heading">thermometer</h2>
-                      <p>GET 40% OFF &sdot; Free Delivery </p>
+                      <div class="small-tag"> 2020</div>
+                      <h2 class="cat-heading">温度计</h2>
+                      <p> 40% 折扣 &sdot; 免费 发货 </p>
                     </div>
                   </div>
                   <!-- End Item --> 
@@ -75,9 +72,9 @@
                   <!-- Item -->
                   <div class="item"> <a href="#"><img alt="" src="${pageContext.request.contextPath}/statics/images/category-img2.jpg"></a>
                     <div class="cat-img-title cat-bg cat-box">
-                      <div class="small-tag">Xperia Brands</div>
-                      <h2 class="cat-heading">Disposable Mask</h2>
-                      <p>Save 70% on all items</p>
+                      <div class="small-tag">Xperia 品牌</div>
+                      <h2 class="cat-heading">一次性 口罩</h2>
+                      <p>节省 40%</p>
                     </div>
                     <!-- End Item --> 
                     
@@ -93,7 +90,7 @@
                   <div class="view-mode"> <a class="button-grid" title="Grid" href="grid.jsp">&nbsp;</a><span class="button-active button-list" title="List">&nbsp;</span> </div>
                 </div>
                 <div class="pages">
-                  <label>Page:</label>
+                  <label>页:</label>
                   <ul class="pagination">
                     <li><a href="#">&laquo;</a></li>
                     <li class="active"><a href="#">1</a></li>
@@ -136,7 +133,7 @@
               <ol class="products-list" id="products-list">
               <c:forEach items="${searchgoods}" var="search">
                 <li class="item first">
-                  <div class="product-image"> <a href="${pageContext.request.contextPath}/product_detail/${g.gid}" title="HTC Rhyme Sense"> 
+                  <div class="product-image"> <a href="${pageContext.request.contextPath}/product_detail/${search.gid}" title="HTC Rhyme Sense"> 
                   <img class="small-image" src="${pageContext.request.contextPath}/statics/file/${search.goodsPhoto}" alt="HTC Rhyme Sense"> </a>
                   </div>
                   <div class="product-shop">
@@ -152,11 +149,11 @@
                       <p><a class="link-learn" title="" href="product_detail.jsp">Learn More</a> </p>
                     </div>
                     <div class="price-box">
-                      <p class="old-price"> <span class="price-label"></span> <span class="price"> $442.99 </span> </p>
-                      <p class="special-price"> <span class="price-label"></span> <span class="price">${search.goodsPrice} </span> </p>
+                      <p class="old-price"> <span class="price-label"></span> <span class="price"> </span> </p>
+                      <p class="special-price"> <span class="price-label"></span> <span class="price">￥${search.goodsPrice} </span> </p>
                     </div>
                     <div class="actions"> 
-                    <a href="${pageContext.request.contextPath}/addcart/${search.gid}">
+                    <a href="${pageContext.request.contextPath}/addcartsearch/${search.gid}">
                       <button class="button btn-cart ajx-cart" title="添加到购物车" type="button"><span>添加到购物车</span></button>
                  	</a>
                  <!--      <span class="add-to-links"> 

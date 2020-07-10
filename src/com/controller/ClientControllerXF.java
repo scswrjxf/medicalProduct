@@ -19,11 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.mysql.jdbc.StringUtils;
+import com.pojo.Cart;
 import com.pojo.Category;
 import com.pojo.Collect;
 import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.User;
+import com.service.CartService;
 import com.service.CategoryService;
 import com.service.CollectServiceXF;
 import com.service.CommentsServiceXF;
@@ -43,7 +45,8 @@ public class ClientControllerXF {
 	private CategoryService categoryService;
 	@Resource
 	private UserService userService;
-
+	@Resource
+	private CartService cartService;
 	// 收藏商品
 	@RequestMapping(value = "/add_new_collect/{gid}", method = RequestMethod.GET)
 	public ModelAndView addNewCollect(@PathVariable Integer gid, HttpSession session) {
@@ -54,6 +57,7 @@ public class ClientControllerXF {
 		collectServiceXF.addNewCollect(loginer.getUserId(), gid);
 		// 在 model中设置一个 coll 值
 		mv.addObject("coll", new Collect());
+		
 		return mv;
 	}
 
@@ -119,6 +123,11 @@ public class ClientControllerXF {
 		// 获取所有的收藏信息
 		List<Collect> collectlist = collectServiceXF.findAllCollectById(loginer.getUserId());
 		mv.addObject("collectlist", collectlist);
+		if(loginer!=null) {
+		// 获取所有的购物车信息
+		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
+		mv.addObject("cartlist",cartlist);
+		}
 		return mv;
 	}
 
@@ -137,11 +146,19 @@ public class ClientControllerXF {
 
 	// 修改密码页面
 	@RequestMapping("/alter_password")
-	public String alter_password(Model model) {
+	public String alter_password(Model model,HttpSession session) {
 		// 获取所有分类
 		List<Category> category = categoryService.findAllCategory();
 		model.addAttribute("category", category);
+		//获取登录信息
+		User loginer = (User)session.getAttribute("loginer");
+		if(loginer!=null) {
+		// 获取所有的购物车信息
+		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
+		model.addAttribute("cartlist",cartlist);
+		}
 		return "client/alter_password";
+		
 	}
 
 	// 根据 userId 修改密码
@@ -170,6 +187,7 @@ public class ClientControllerXF {
 		// 修改密码
 		userService.updatePwdById(newPassword, ((User) loginer).getUserId());
 		mv.addObject("error", "密码修改成功，去登录");
+		session.removeAttribute("loginer");
 		mv.setViewName("redirect:/login");
 		return mv;
 	}
@@ -191,4 +209,35 @@ public class ClientControllerXF {
 		}
 		return JSON.toJSONString(map);
 	}
+	// 我的评论
+		@RequestMapping(value = "/my_comment", method = RequestMethod.GET)
+		public ModelAndView my_comment(HttpSession session) {
+			ModelAndView mv = new ModelAndView();
+			// 获取所有分类
+			List<Category> category = categoryService.findAllCategory();
+			mv.addObject("category", category);
+			mv.setViewName("client/my_comment");
+			User loginer = (User) session.getAttribute("loginer");
+			if(loginer!=null) {
+			// 获取所有的购物车信息
+			List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
+			mv.addObject("cartlist",cartlist);
+			}
+			// 根据 userId 获取所有的评论信息
+			List<Comment> commentlist = commentsServiceXF.findAllCommentById(loginer.getUserId());
+			mv.addObject("commentlist", commentlist);
+			return mv;
+		}
+		
+		// 我的评论页面删除评论
+		@RequestMapping(value = "/del_comment/{commentId}", method = RequestMethod.GET)
+		public ModelAndView del_comment(@PathVariable Integer commentId, HttpSession session) {
+			ModelAndView mv = new ModelAndView();
+			User loginer = (User) session.getAttribute("loginer");
+			// 根据 userId 和 commentId 删除表 comment 中对应的记录
+			commentsServiceXF.delCommentByUidAndCommentId(loginer.getUserId(), commentId); 
+			mv.addObject("error", "删除评论成功");
+			mv.setViewName("redirect:/clientXF/my_comment");
+			return mv;
+		}
 }

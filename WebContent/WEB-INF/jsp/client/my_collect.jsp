@@ -81,9 +81,11 @@
 									</tr>
 									<c:forEach var="collect" items="${collectlist }">
 										<tr>
-											<td style="height: 110px; width: 100px;"><img alt="" style="height: 100px; width: 100px;"
+											<td style="height: 110px; width: 100px;">
+											<a href="${pageContext.request.contextPath}/product_detail/${collect.goodsId.gid}">
+											<img alt="" style="height: 100px; width: 100px;"
 												src="${pageContext.request.contextPath}/statics/file/${collect.goodsId.goodsPhoto}"
-												class="avatar avatar-60 photo"></td>
+												class="avatar avatar-60 photo"></a></td>
 											<td><span>${collect.goodsId.goodsName}</span></td>
 											<td><span>￥${collect.goodsId.goodsPrice}元</span></td>
 											<td><a href="${pageContext.request.contextPath}/clientXF/del_collect2/${collect.goodsId.gid}">取消收藏</a></td>
@@ -102,6 +104,7 @@
 									<li class="item odd"><a href="${pageContext.request.contextPath}/cserver/viewuser">用户设置</a></li>
 									<li class="item odd"><a href="${pageContext.request.contextPath}/cartlist">购物车</a> </li> 
 									<li class="item odd"><strong>我的收藏</strong></li> 
+									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
 									<li class="item odd"><a href="${pageContext.request.contextPath}/orderlist">我的订单</a></li>
 									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/alter_password">修改密码</a></li>
 								</ol>

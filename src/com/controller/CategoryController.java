@@ -41,7 +41,7 @@ public class CategoryController {
 		User loginer = (User)session.getAttribute("loginer");
 		if(loginer!=null) {
 		// 获取所有的购物车信息
-		List<Cart> cartlist = cartService.findAllCart(loginer.getUserAlice());
+		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
 		model.addAttribute("cartlist",cartlist);
 		}
 		model.addAttribute("goods",goodsService.findCategoryGoods(categoryId));
@@ -56,7 +56,7 @@ public class CategoryController {
 		User loginer = (User)session.getAttribute("loginer");
 		if(loginer!=null) {
 		// 获取所有的购物车信息
-		List<Cart> cartlist = cartService.findAllCart(loginer.getUserAlice());
+		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
 		model.addAttribute("cartlist",cartlist);
 		}
 		model.addAttribute("goods",goodsService.findAllGoods());

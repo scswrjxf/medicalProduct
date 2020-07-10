@@ -100,7 +100,7 @@
 											</div>
 											<div class="ratings"> 
 												<p class="rating-links">
-													<a href="#">添加您的评论</a>
+													<a href="#">库存：${goodInfor.goodsNumber }</a>
 												</p>
 											</div>
 											<div class="price-block">

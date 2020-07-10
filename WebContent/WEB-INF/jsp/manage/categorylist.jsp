@@ -11,8 +11,10 @@
 					<a href="${pageContext.request.contextPath}/server/add_category" style="float: left;margin-bottom: 20px;margin-left: 20px;">添加分类</a>
 				</form>
             </div>
-            <!--用户-->
+            <!--分类-->
+            <div class="error" style="color: red;">${error }</div>
             <table class="providerTable" cellpadding="0" cellspacing="0">
+            
                 <tr class="firstTr">
                     <th width="5%">分类ID</th>
                     <th width="10%">分类</th>

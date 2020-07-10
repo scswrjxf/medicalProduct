@@ -100,20 +100,9 @@
 																<div class="item-img-info">
 																	<a class="product-image"
 																		href="${pageContext.request.contextPath}/product_detail/${remai.gid}">
-																		<img alt=""
+																		<img alt=""	style="width: 250px;height: 250px;"
 																		src="${pageContext.request.contextPath}/statics/products-images/${remai.goodsPhoto}">
-																	</a>
-																	<div class="sale-label sale-top-right">- 40%</div>
-																	<div class="box-hover">
-																		<ul class="add-to-links">
-																			<li><a class="link-quickview"
-																				href="quick_view.html"></a></li>
-																			<li><a class="link-wishlist"
-																				href="wishlist.html"></a></li>
-																			<li><a class="link-compare" href="compare.html"></a>
-																			</li>
-																		</ul>
-																	</div>
+																	</a> 
 																</div>
 															</div>
 															<div class="item-info">
@@ -122,6 +111,7 @@
 																		<a
 																			href="${pageContext.request.contextPath}/product_detail/${remai.gid}">${remai.goodsName}</a>
 																	</div>
+																	<div class="brand">库存：${remai.goodsNumber }</div>
 																	<div class="rating">
 																		<div class="ratings">
 																			<div class="rating-box">
@@ -190,20 +180,10 @@
 																<div class="item-img-info">
 																	<a class="product-image"
 																		href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
-																		<img alt=""
+																		<img alt=""	style="width: 250px;height: 250px;"
 																		src="${pageContext.request.contextPath}/statics/products-images/${xinpin.goodsPhoto }">
 																	</a>
-
-																	<div class="box-hover">
-																		<ul class="add-to-links">
-																			<li><a class="link-quickview"
-																				href="quick_view.html"></a></li>
-																			<li><a class="link-wishlist"
-																				href="wishlist.html"></a></li>
-																			<li><a class="link-compare" href="compare.html"></a>
-																			</li>
-																		</ul>
-																	</div>
+																	<div class="new-label new-top-left">new</div> 
 																</div>
 															</div>
 															<div class="item-info">
@@ -212,6 +192,7 @@
 																		<a
 																			href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">${xinpin.goodsName }</a>
 																	</div>
+																	<div class="brand">库存：${xinpin.goodsNumber }</div>
 																	<div class="rating">
 																		<div class="ratings">
 																			<div class="rating-box">
@@ -231,16 +212,32 @@
 																				</span>
 																			</div>
 																		</div>
-																		<div class="action">
-																			<a
-																				href="${pageContext.request.contextPath}/addcart/${xinpin.gid}">
-																				<button id="cart" class="button btn-cart"
-																					type="button" title=""
-																					data-original-title="Add to Cart">
-																					<i class="fa fa-shopping-basket"></i>
-																				</button>
-																			</a>
-																		</div>
+																		<c:choose>
+																			<c:when test="${!empty loginer }">
+																				<div class="action">
+																					<a
+																						href="${pageContext.request.contextPath}/addcart/${xinpin.gid}">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart"
+																							goodsid="${xinpin.gid}">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</a>
+																				</div>
+																			</c:when>
+																			<c:otherwise>
+																				<div class="dlcart">
+																					<div class="action">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</div>
+																				</div>
+																			</c:otherwise>
+																		</c:choose>
 																	</div>
 																</div>
 															</div>
@@ -263,20 +260,10 @@
 																<div class="item-img-info">
 																	<a class="product-image" title="Retis lapen casen"
 																		href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">
-																		<img alt=""
+																		<img alt=""	style="width: 250px;height: 250px;"
 																		src="${pageContext.request.contextPath}/statics/products-images/${tehui.goodsPhoto}">
 																	</a>
-
-																	<div class="box-hover">
-																		<ul class="add-to-links">
-																			<li><a class="link-quickview"
-																				href="quick_view.html"></a></li>
-																			<li><a class="link-wishlist"
-																				href="wishlist.html"></a></li>
-																			<li><a class="link-compare" href="compare.html"></a>
-																			</li>
-																		</ul>
-																	</div>
+																	<div class="sale-label sale-top-right">- 40%</div> 
 																</div>
 															</div>
 															<div class="item-info">
@@ -285,6 +272,7 @@
 																		<a title="Retis lapen casen"
 																			href="${pageContext.request.contextPath}/product_detail/${tehui.gid }">${tehui.goodsName }</a>
 																	</div>
+																	<div class="brand">库存：${tehui.goodsNumber }</div>
 																	<div class="rating">
 																		<div class="ratings">
 																			<div class="rating-box">
@@ -304,16 +292,32 @@
 																				</span>
 																			</div>
 																		</div>
-																		<div class="action">
-																			<a
-																				href="${pageContext.request.contextPath}/addcart/${tehui.gid}">
-																				<button id="cart" class="button btn-cart"
-																					type="button" title=""
-																					data-original-title="Add to Cart">
-																					<i class="fa fa-shopping-basket"></i>
-																				</button>
-																			</a>
-																		</div>
+																		<c:choose>
+																			<c:when test="${!empty loginer }">
+																				<div class="action">
+																					<a
+																						href="${pageContext.request.contextPath}/addcart/${tehui.gid}">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart"
+																							goodsid="${tehui.gid}">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</a>
+																				</div>
+																			</c:when>
+																			<c:otherwise>
+																				<div class="dlcart">
+																					<div class="action">
+																						<button id="cart" class="button btn-cart"
+																							type="button" title=""
+																							data-original-title="Add to Cart">
+																							<i class="fa fa-shopping-basket"></i>
+																						</button>
+																					</div>
+																				</div>
+																			</c:otherwise>
+																		</c:choose>
 																	</div>
 																</div>
 															</div>
@@ -355,7 +359,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-9">
-						<h2>Deal of the day</h2>
+						<h2>销量冠军</h2>
 						<div class="hot-deal">
 
 							<ul class="products-grid">
@@ -364,10 +368,11 @@
 										<div class="item-info">
 											<div class="info-inner">
 												<div class="item-title">
-													<a href="product_detail.jsp" title="Retis lapen casen">Covmed
-														60S Tablets for corona</a>
+													<a
+														href="${pageContext.request.contextPath}/product_detail/${hot.gid}"
+														title="Retis lapen casen">${hot.goodsName}</a>
 												</div>
-												<div class="brand">Xperia</div>
+												<div class="brand">库存：${hot.goodsNumber }</div>
 												<div class="item-content">
 													<div class="rating">
 														<div class="ratings">
@@ -382,35 +387,26 @@
 													</div>
 													<div class="item-price">
 														<div class="price-box">
-															<span class="regular-price"> <span class="price">$125.00</span>
-															</span> <span class="old-price"><span class="price">$199.00</span></span>
+															<span class="regular-price"> <span class="price">￥${hot.goodsPrice }</span>
+															</span> <span class="old-price"><span class="price"></span></span>
 														</div>
 													</div>
 													<div class="box-timer">
 														<div class="countbox_1 timer-grid"></div>
 													</div>
-													<div class="offer-text">Hurry Up! Limited time offer</div>
+													<div class="offer-text">快来 购买吧！</div>
 												</div>
 											</div>
 										</div>
 										<div class="item-img">
 											<div class="item-img-info">
-												<a href="#" title="Retis lapen casen" class="product-image">
-													<img
-													src="${pageContext.request.contextPath}/statics/products-images/product1.jpg"
+												<a
+													href="${pageContext.request.contextPath}/product_detail/${hot.gid}"
+													title="Retis lapen casen" class="product-image"> <img
+													src="${pageContext.request.contextPath}/statics/file/${hot.goodsPhoto}"
 													alt="Retis lapen casen">
 												</a>
-												<div class="hot-label hot-top-left">Hot Deal</div>
-												<div class="box-hover">
-													<ul class="add-to-links">
-														<li><a class="link-quickview" href="quick_view.html"></a>
-														</li>
-														<li><a class="link-wishlist" href="wishlist.html"></a>
-														</li>
-														<li><a class="link-compare" href="compare.html"></a>
-														</li>
-													</ul>
-												</div>
+												<div class="hot-label hot-top-left">热销</div>
 
 											</div>
 										</div>
@@ -426,71 +422,28 @@
 								<div class="slider-items-products">
 									<div id="testimonials-slider"
 										class="product-flexslider hidden-buttons home-testimonials">
-										<div
-											class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme"
+										<div class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme"
 											style="opacity: 1; display: block;">
-											<div class="owl-item">
-												<div class="holder">
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-														elit, Lid est laborum dolo rumes fugats untras. dolore
-														magna aliquam erat volutpat. Aenean est auctorwisiet
-														urna...</p>
-													<div class="testimonial-arrow-down"></div>
-													<div class="thumb">
-														<div class="customer-img">
-															<img
-																src="${pageContext.request.contextPath}/statics/images/member2.png"
-																alt="Saraha Smith">
+											<c:forEach items="${commentnew }" var="commentnew">
+												<div class="owl-item">
+													<div class="holder">
+														<div class="testimonial-arrow-down" >
+															<em style="width: 150px;">${commentnew.commentMessage }</em>
 														</div>
-														<div class="customer-bio">
-															<strong class="name">Saraha Smith</strong> <span>Happy
-																Customer</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="owl-item">
-												<div class="holder">
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-														elit, Lid est laborum dolo rumes fugats untras. dolore
-														magna aliquam erat volutpat. Aenean est auctorwisiet
-														urna...</p>
-													<div class="testimonial-arrow-down"></div>
-													<div class="thumb">
-														<div class="customer-img">
-															<img
-																src="${pageContext.request.contextPath}/statics/images/member1.png"
-																alt="Stephen Doe">
-														</div>
-														<div class="customer-bio">
-															<strong class="name">Stephen Doe</strong> <span>Happy
-																Customer</span>
+														<div class="thumb">
+															<div class="customer-img">
+																<img
+																	src="${pageContext.request.contextPath}/statics/file/${commentnew.uId.userPhoto }"
+																	alt="Saraha Smith">
+															</div>
+															<div class="customer-bio">
+																<strong class="name">${commentnew.uId.userAlice }</strong>
+																<span>客户评论</span> 
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="owl-item">
-												<div class="holder">
-													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing
-														elit, Lid est laborum dolo rumes fugats untras. dolore
-														magna aliquam erat volutpat. Aenean est auctorwisiet
-														urna...</p>
-													<div class="testimonial-arrow-down"></div>
-													<div class="thumb">
-														<div class="customer-img">
-															<img
-																src="${pageContext.request.contextPath}/statics/images/member3.png"
-																alt="Mark doe">
-														</div>
-														<div class="customer-bio">
-															<strong class="name">Mark doe</strong> <span>Happy
-																Customer</span>
-														</div>
-													</div>
-												</div>
-											</div>
-
-
+											</c:forEach>
 										</div>
 									</div>
 
@@ -515,409 +468,81 @@
 								class="product-flexslider hidden-buttons">
 								<div
 									class="slider-items slider-width-col4 products-grid block-content">
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="${pageContext.request.contextPath}/product_detail/${xinpin.gid }">
-														<img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product12.jpg">
-													</a>
-													<div class="new-label new-top-left">new</div>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Linen</div>
-													<div class="rating">
-														<div class="ratings">
-															<div class="rating-box">
-																<div style="width: 80%" class="rating"></div>
-															</div>
-															<p class="rating-links">
-																<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																<a href="#">Add Review</a>
-															</p>
-														</div>
-													</div>
-													<div class="item-content">
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$88.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Item -->
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product11.jpg">
-													</a>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Vincent</div>
-													<div class="item-content">
-														<div class="rating">
-															<div class="ratings">
-																<div class="rating-box">
-																	<div style="width: 80%" class="rating"></div>
-																</div>
-																<p class="rating-links">
-																	<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																	<a href="#">Add Review</a>
-																</p>
-															</div>
-														</div>
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$325.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- End Item -->
-									<!-- Item -->
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product10.jpg">
-													</a>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">justrin</div>
-													<div class="item-content">
-														<div class="rating">
-															<div class="ratings">
-																<div class="rating-box">
-																	<div style="width: 80%" class="rating"></div>
-																</div>
-																<p class="rating-links">
-																	<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																	<a href="#">Add Review</a>
-																</p>
-															</div>
-														</div>
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$245.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- End Item -->
-									<div class="item">
 
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product6.jpg">
-													</a>
-													<div class="new-label new-top-left">new</div>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Cello</div>
-													<div class="rating">
-														<div class="ratings">
-															<div class="rating-box">
-																<div style="width: 80%" class="rating"></div>
-															</div>
-															<p class="rating-links">
-																<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																<a href="#">Add Review</a>
-															</p>
-														</div>
-													</div>
-													<div class="item-content">
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$88.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 									<!-- Item -->
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product8.jpg">
-													</a>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
+									<c:forEach items="${goods }" var="goods">
+										<div class="item">
+											<div class="item-inner">
+												<div class="item-img">
+													<div class="item-img-info">
+														<a class="product-image" title="Retis lapen casen"
+															href="${pageContext.request.contextPath}/product_detail/${goods.gid}">
+															<img alt=""	style="width: 250px;height: 250px;"
+															src="${pageContext.request.contextPath}/statics/file/${goods.goodsPhoto}">
+														</a> 
 													</div>
 												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Zacharias</div>
-													<div class="rating">
-														<div class="ratings">
-															<div class="rating-box">
-																<div style="width: 80%" class="rating"></div>
-															</div>
-															<p class="rating-links">
-																<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																<a href="#">Add Review</a>
-															</p>
+												<div class="item-info">
+													<div class="info-inner">
+														<div class="item-title">
+															<a title="Retis lapen casen"
+																href="${pageContext.request.contextPath}/product_detail/${goods.gid}">
+																${goods.goodsName} </a>
 														</div>
-													</div>
-													<div class="item-content">
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$88.00</span>
-																</span>
+														<div class="brand">${goods.goodsNumber }</div>
+														<div class="item-content">
+															<div class="rating">
+																<div class="ratings">
+																	<div class="rating-box">
+																		<div style="width: 80%" class="rating"></div>
+																	</div>
+																	<p class="rating-links">
+																		<a href="#">1 Review(s)</a> <span class="separator">|</span>
+																		<a href="#">Add Review</a>
+																	</p>
+																</div>
 															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
+															<div class="item-price">
+																<div class="price-box">
+																	<span class="regular-price"> <span class="price">${goods.goodsPrice}</span>
+																	</span>
+																</div>
+															</div>
+															<c:choose>
+																<c:when test="${!empty loginer }">
+																	<div class="action">
+																		<a
+																			href="${pageContext.request.contextPath}/addcart/${goods.gid}">
+																			<button id="cart" class="button btn-cart"
+																				type="button" title=""
+																				data-original-title="Add to Cart"
+																				goodsid="${goods.gid}">
+																				<i class="fa fa-shopping-basket"></i>
+																			</button>
+																		</a>
+																	</div>
+																</c:when>
+																<c:otherwise>
+																	<div class="dlcart">
+																		<div class="action">
+																			<button id="cart" class="button btn-cart"
+																				type="button" title=""
+																				data-original-title="Add to Cart">
+																				<i class="fa fa-shopping-basket"></i>
+																			</button>
+																		</div>
+																	</div>
+																</c:otherwise>
+															</c:choose>
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</c:forEach>
 									<!-- End Item -->
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product7.jpg">
-													</a>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Cello</div>
-													<div class="rating">
-														<div class="ratings">
-															<div class="rating-box">
-																<div style="width: 80%" class="rating"></div>
-															</div>
-															<p class="rating-links">
-																<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																<a href="#">Add Review</a>
-															</p>
-														</div>
-													</div>
-													<div class="item-content">
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$88.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 									<!-- Item -->
-									<div class="item">
-										<div class="item-inner">
-											<div class="item-img">
-												<div class="item-img-info">
-													<a class="product-image" title="Retis lapen casen"
-														href="product_detail.html"> <img alt=""
-														src="${pageContext.request.contextPath}/statics/products-images/product6.jpg">
-													</a>
-													<div class="box-hover">
-														<ul class="add-to-links">
-															<li><a class="link-quickview" href="quick_view.html"></a>
-															</li>
-															<li><a class="link-wishlist" href="wishlist.html"></a>
-															</li>
-															<li><a class="link-compare" href="compare.html"></a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="item-info">
-												<div class="info-inner">
-													<div class="item-title">
-														<a title="Retis lapen casen" href="product_detail.html">Covmed
-															Mystone 60S Tablets for covid-19</a>
-													</div>
-													<div class="brand">Linen</div>
-													<div class="rating">
-														<div class="ratings">
-															<div class="rating-box">
-																<div style="width: 80%" class="rating"></div>
-															</div>
-															<p class="rating-links">
-																<a href="#">1 Review(s)</a> <span class="separator">|</span>
-																<a href="#">Add Review</a>
-															</p>
-														</div>
-													</div>
-													<div class="item-content">
-														<div class="item-price">
-															<div class="price-box">
-																<span class="regular-price"> <span class="price">$88.00</span>
-																</span>
-															</div>
-														</div>
-														<div class="action">
-															<button class="button btn-cart" type="button" title=""
-																data-original-title="Add to Cart">
-																<i class="fa fa-shopping-basket"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+
 									<!-- End Item -->
 								</div>
 							</div>
@@ -933,28 +558,30 @@
 				<div class="column-left">
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="${pageContext.request.contextPath}/statics/images/Sophie_editorail-16_500x.jpg"
+							<img
+								src="${pageContext.request.contextPath}/statics/images/Sophie_editorail-16_500x.jpg"
 								class="parallax-child--second" alt="article image">
 						</div>
 						<div class="article-home__content">
 							<div class="inside">
-								<p class="date">June 01, 2018</p>
-								<h4 class="title">Powerful and flexible Ecommerce Theme</h4>
-								<a href="#" class="link">Read more <i
+								<p class="date">2020.07.11</p>
+								<h4 class="title">口罩用于过滤进入口鼻的空气</h4>
+								<a href="#" class="link"> <i
 									class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="${pageContext.request.contextPath}/statics/images/drake_500x.jpg" class="parallax-child--second"
-								alt="article image">
+							<img
+								src="${pageContext.request.contextPath}/statics/images/drake_500x.jpg"
+								class="parallax-child--second" alt="article image">
 						</div>
 						<div class="article-home__content">
 							<div class="inside">
-								<p class="date">June 07, 2018</p>
-								<h4 class="title">unlimited colors with good design</h4>
-								<a href="#" class="link">Read more <i
+								<p class="date">2020.07.11</p>
+								<h4 class="title">免洗洗手液能像有效杀害细菌</h4>
+								<a href="#" class="link"> <i
 									class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>
@@ -963,14 +590,15 @@
 				<div class="column-right">
 					<div class="article-home">
 						<div class="article-home__image parallax-parent">
-							<img src="${pageContext.request.contextPath}/statics/images/BLOG_2_square_1000x.jpg"
+							<img
+								src="${pageContext.request.contextPath}/statics/images/BLOG_2_square_1000x.jpg"
 								class="parallax-child--second" alt="article image">
 						</div>
 						<div class="article-home__content">
 							<div class="inside">
-								<p class="date">June 14, 2018</p>
-								<h4 class="title">Awesome template with lot's of features</h4>
-								<a href="#" class="link">Read more <i
+								<p class="date">2020.07.11</p>
+								<h4 class="title">预防新型冠状病毒</h4>
+								<a href="#" class="link"> <i
 									class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>

@@ -74,6 +74,32 @@ public class CommentsServiceImplXF implements CommentsServiceXF {
 		}
 		comment.setCommentMessage(meg);
 		return commentsMapperXF.addNewComment(comment);
+	}
+
+	// 根据 userId 获取所有的评论信息
+	@Override
+	public List<Comment> findAllCommentById(String userId) {
+		List<Comment> comments=commentsMapperXF.findAllCommentById(userId);
+		// 对评论内容进行解码处理(采用UTF-8编码格式)
+		String meg = null;
+		for(Comment com:comments) {
+			try {
+				// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
+				meg = URLDecoder.decode(com.getCommentMessage(), "utf-8");
+				// 屏蔽掉敏感内容
+				meg = meg.replaceAll("(共产党)|(操)","*");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 
+			com.setCommentMessage(meg);
+		}	
+		return comments;
+	}
+
+	// 根据 userId 和 commentId 删除表 comment 中对应的记录
+	@Override
+	public int delCommentByUidAndCommentId(String userId, Integer commentId) {
+		return commentsMapperXF.delCommentByUidAndCommentId(userId,commentId);
 	}  
   
 }

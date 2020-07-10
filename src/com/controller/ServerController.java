@@ -30,6 +30,7 @@ import com.pojo.Category;
 import com.pojo.Goods;
 import com.pojo.Touch;
 import com.pojo.User;
+import com.service.GoodsService;
 import com.service.ServerService;
 
 
@@ -38,6 +39,8 @@ import com.service.ServerService;
 public class ServerController {
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private GoodsService goodsService;
 	// 访问 frame.jsp 页面
 	@RequestMapping(value="/frame",method=RequestMethod.GET)
 	public ModelAndView frame() {
@@ -126,7 +129,8 @@ public class ServerController {
 			model.addAttribute("error","不能添加相同的分类名称");
 			return "manage/add_category";
 		}
-		return "redirect:/server/categorylist";
+		model.addAttribute("error","添加分类成功");
+		return "manage/add_category";
 	}
 	//跳转到 goodsmodify 页面（REST）
 	@RequestMapping(value="/goodsmodify/{gid}",method=RequestMethod.GET)
@@ -150,6 +154,7 @@ public class ServerController {
 		if(StringUtils.isNullOrEmpty(goods.getGoodsName()))
 			goods.setGoodsName(null);
 		serverService.updateGoodsByGid(goods);
+		mv.addObject("error","修改成功");
 		mv.setViewName("redirect:/server/goodsmodify/"+goods.getGid());
 		return mv;
 	}
@@ -243,7 +248,8 @@ public class ServerController {
 		goods.setInputDate(new Date());
 		// 把 user 信息保存到数据库中
 		serverService.addNewGoods(goods);
-		mv.setViewName("redirect:/server/goodslist");
+		mv.setViewName("manage/goodsadd");
+		mv.addObject("error","添加商品成功");
 		return mv;
 	}
 	// 根据 gid 删除商品
@@ -253,12 +259,18 @@ public class ServerController {
 		// 使用了重定向
 		return "redirect:/server/goodslist";
 	}
-	// 根据 categoryId 删除商品
+	// 根据 categoryId 删除商品分类
 	@RequestMapping("/delcategory/{categoryId}")
-	public String delcategory(@PathVariable Integer categoryId) {
+	public String delcategory(@PathVariable Integer categoryId,Model model) {
+		List<Goods> goods= goodsService.findCategoryGoods(categoryId);
+		model.addAttribute("goods",goods);
+		if(goods!= null) {
+			model.addAttribute("error","此分类中含有商品");
+			return "redirect:/server/categorylist";
+		}
 		serverService.delCategory(categoryId);
 		// 使用了重定向
-		return "redirect:/server/categorylist";
+		return "/server/categorylist";
 	}
 	//跳转到 about_us 页面（REST）
 	@RequestMapping(value="/about_us",method=RequestMethod.GET)
@@ -280,6 +292,7 @@ public class ServerController {
 		if(StringUtils.isNullOrEmpty(about.getAboutDesc()))
 			about.setAboutDesc(null);
 		serverService.updateAboutByAid(about);
+		mv.addObject("error","修改成功");
 		mv.setViewName("redirect:/server/about_us");
 		return mv;
 	}

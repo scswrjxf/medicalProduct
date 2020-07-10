@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.dao.CartMapper;
 import com.pojo.Cart;
+import com.pojo.Comment;
 import com.pojo.Goods;
 import com.pojo.Orders;
 import com.pojo.User;
@@ -96,5 +99,27 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public User findUserByUserAlice(String userAlice) {
 		return cartMapper.findUserByUserAlice(userAlice);
+	}
+	@Override
+	public Goods hotGoods() {
+		return cartMapper.hotGoods();
+	}
+	@Override
+	public List<Comment> findCommentFive() {
+		List<Comment> comments=cartMapper.findCommentFive();
+		// 对评论内容进行解码处理(采用UTF-8编码格式)
+		String meg = null;
+		for(Comment com:comments) {
+			try {
+				// URLDecoder.decode——解码， URLEncoder.encode——编码 (采用UTF-8编码格式)
+				meg = URLDecoder.decode(com.getCommentMessage(), "utf-8");
+				// 屏蔽掉敏感内容
+				meg = meg.replaceAll("(共产党)|(操)","*");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 
+			com.setCommentMessage(meg);
+		}	
+		return comments;
 	}
 }
