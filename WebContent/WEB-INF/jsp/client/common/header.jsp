@@ -53,6 +53,8 @@
 												href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
 											<li role="presentation"><a
 												href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
+												<li role="presentation"><a
+												href="${pageContext.request.contextPath}/clientXF/goodsadd">添加商品</a></li>
 											<li role="presentation"><a
 												href="${pageContext.request.contextPath}/orderlist">我的订单</a></li> 
 											<li role="presentation"><a
@@ -198,8 +200,10 @@
 						</div>
 						<div class="mega-menu-category" style="display: none;">
 							<ul class="nav">
-								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="${pageContext.request.contextPath}/list">
+								<!-- <li role="presentation"><a role="menuitem" tabindex="-1"
+									href="${pageContext.request.contextPath}/list"> -->
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="${pageContext.request.contextPath}/user/list">
 										<i class="fa fa-long-arrow-right" aria-hidden="true"></i>全部商品</a>
 								</li>
 								<c:forEach items="${category }" var="ctg">

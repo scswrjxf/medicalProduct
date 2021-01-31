@@ -73,6 +73,7 @@
 								<li class="item odd"><a
 									href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
 								<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
+									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/goodsadd">添加商品</a></li>
 								<li class="item odd"><a
 									href="${pageContext.request.contextPath}/orderlist">我的订单</a></li>
 								<li class="item odd"><a

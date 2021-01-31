@@ -32,6 +32,8 @@ public class CategoryController {
 //		mv.addObject("category",category);
 //		return mv;
 //	}
+	
+	// 跳转到grid页面
 	@RequestMapping(value="/grid")
 	public String gotoindex(Integer categoryId,Model model,HttpSession session) {
 		// 获取所有 分类
@@ -47,19 +49,20 @@ public class CategoryController {
 		model.addAttribute("goods",goodsService.findCategoryGoods(categoryId));
 		return "client/grid";
 	}
-	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public String allGoods(Model model,HttpSession session) {
-		// 获取所有 分类
-		List<Category> category = categoryService.findAllCategory();
-		model.addAttribute("category",category);
-		//获取登录信息
-		User loginer = (User)session.getAttribute("loginer");
-		if(loginer!=null) {
-		// 获取所有的购物车信息
-		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
-		model.addAttribute("cartlist",cartlist);
-		}
-		model.addAttribute("goods",goodsService.findAllGoods());
-		return "client/list";
-	}
+//	 //跳转到list页面
+//	@RequestMapping(value="/list",method=RequestMethod.GET)
+//	public String allGoods(Model model,HttpSession session) {
+//		// 获取所有 分类
+//		List<Category> category = categoryService.findAllCategory();
+//		model.addAttribute("category",category);
+//		//获取登录信息
+//		User loginer = (User)session.getAttribute("loginer");
+//		if(loginer!=null) {
+//		// 获取所有的购物车信息
+//		List<Cart> cartlist = cartService.findAllCart(loginer.getUserId());
+//		model.addAttribute("cartlist",cartlist);
+//		}
+//		model.addAttribute("goods",goodsService.findAllGoods());
+//		return "client/list";
+//	}
 }

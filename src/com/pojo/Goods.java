@@ -17,7 +17,8 @@ public class Goods {
 	public Goods() {
 		super();
 	}
-	public Goods(Integer gid, String goodsName, String goodsPhoto, Integer goodsPrice, String goodsDesc, Date inputDate,
+	public Goods(Integer gid, String goodsName, String goodsPhoto, 
+			Integer goodsPrice, String goodsDesc, Date inputDate,
 			Integer goodsNumber, Category categoryId) {
 		super();
 		this.gid = gid;
@@ -28,7 +29,7 @@ public class Goods {
 		this.inputDate = inputDate;
 		this.goodsNumber = goodsNumber;
 		this.categoryId = categoryId;
-	}
+	} 
 	public Integer getGid() {
 		return gid;
 	}

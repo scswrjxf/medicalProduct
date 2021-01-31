@@ -1,11 +1,13 @@
 package com.controller;
 
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
@@ -30,6 +33,7 @@ import com.service.CategoryService;
 import com.service.CollectServiceXF;
 import com.service.CommentsServiceXF;
 import com.service.GoodsServiceXF;
+import com.service.ServerService;
 import com.service.UserService;
 
 @Controller
@@ -238,6 +242,72 @@ public class ClientControllerXF {
 			commentsServiceXF.delCommentByUidAndCommentId(loginer.getUserId(), commentId); 
 			mv.addObject("error", "删除评论成功");
 			mv.setViewName("redirect:/clientXF/my_comment");
+			return mv;
+		}
+		/**
+		 * 2021/01/29
+		 * @return
+		 */
+		//跳转到goodsadd页面
+		@RequestMapping(value="/goodsadd",method=RequestMethod.GET)
+		public ModelAndView gotoGoodsAdd() {
+			ModelAndView mv=new ModelAndView("client/goodsadd");
+			//获取所有商品分类信息
+			List<Category> category=categoryService.findAllCategory();
+			mv.addObject("category",category);
+			
+			return mv;
+		}
+		/**
+		 * 2021/1/29
+		 * @param goodsName
+		 * @return
+		 */
+		@Resource
+		private ServerService serverService;
+		// 验证 goodsName 唯一性
+		@RequestMapping("/ucexist")
+		// 设置返回的内容为响应主体
+		@ResponseBody
+		public Object goodsNameIsExit(String goodsName) {
+			Goods result = serverService.findGoodsByGoodsName(goodsName);
+			HashMap<String, String> resultMap = new HashMap<>();
+			if(null == result)
+				resultMap.put("goodsName", "noexist");
+			else
+				resultMap.put("goodsName", "exist");
+			// 使用 fastjson 把 java 对象转换为 json 字符串
+			return JSON.toJSONString(resultMap);
+		}
+		// 添加商品
+		@RequestMapping(value="/goodsnewadd",method=RequestMethod.POST)
+		public ModelAndView goodsAdd(Goods goods,
+				MultipartFile a_goodsPhoto,
+				HttpServletRequest request,
+				HttpSession session) throws Exception{
+			ModelAndView mv = new ModelAndView();
+			// 处理文件上传
+			String path = request.getServletContext().getRealPath("/statics/file/");
+			// 上传证件照
+			if(!a_goodsPhoto.isEmpty()) {
+				//上传文件名
+				String filename = a_goodsPhoto.getOriginalFilename();
+				filename = "goodsPhoto"+new Date().getTime()
+						+filename.substring(filename.lastIndexOf("."));
+				//将上传文件保存到一个目标文件当中
+				a_goodsPhoto.transferTo(new File(path+File.separator+filename));
+				// 使用文件名替换 goods 中的 goodsPhoto 属性值
+				goods.setGoodsPhoto(filename);
+			}
+			else {
+				// 没有上传文件，设置属性为 null
+				goods.setGoodsPhoto(null);
+			}
+			goods.setInputDate(new Date());
+			// 把 user 信息保存到数据库中
+			serverService.addNewGoods(goods);
+			mv.setViewName("redirect:/clientXF/goodsadd");
+			mv.addObject("error","添加商品成功");
 			return mv;
 		}
 }

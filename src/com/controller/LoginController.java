@@ -64,6 +64,7 @@ public class LoginController{
 	private CartService cartService;
 	@Resource
 	private GoodsService goodsService;
+	
 	// 访问 index 页面
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index(HttpSession session) { 
@@ -97,7 +98,8 @@ public class LoginController{
 		//全部商品
 		mv.addObject("goods",goodsService.findAllGoods());
 		return mv;
-	}
+	} 
+	
 	// 跳转到 login 页面
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@ModelAttribute User user,Model model) {

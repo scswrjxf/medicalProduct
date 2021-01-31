@@ -48,7 +48,7 @@
 														data-splitout='none' data-elementdelay='0.1'
 														data-endelementdelay='0.1'
 														style='z-index: 4; white-space: nowrap;'>
-														<a href='${pageContext.request.contextPath}/list' class="buy-btn">全部商品</a>
+														<a href='${pageContext.request.contextPath}/user/list' class="buy-btn">全部商品</a>
 													</div>
 												</div>
 											</div>
@@ -93,7 +93,7 @@
 														data-splitout='none' data-elementdelay='0.1'
 														data-endelementdelay='0.1'
 														style='z-index: 4; white-space: nowrap;'>
-														<a href='${pageContext.request.contextPath}/list' class="buy-btn">全部商品</a>
+														<a href='${pageContext.request.contextPath}/user/list' class="buy-btn">全部商品</a>
 													</div>
 												</div>
 											</div>

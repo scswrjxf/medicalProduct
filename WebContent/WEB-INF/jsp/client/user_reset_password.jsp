@@ -74,9 +74,8 @@
 								</div>
 								<fieldset class="col2-set"> 
 									<div class="col-1 new-users"> 
-										<div class="content">
-											<p>这里放一张图片</p>
-											<img id="codeImg" style="height:300px;width: 500px" src="${pageContext.request.contextPath}/statics/images/banner1.jpg"/>
+										<div class="content"> 
+											<img style="height:300px;width: 500px" src="${pageContext.request.contextPath}/statics/images/banner1.jpg"/>
 										</div>
 									</div>
 									<div class="col-2 registered-users">

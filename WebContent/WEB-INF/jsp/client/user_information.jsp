@@ -20,8 +20,10 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- CSS Style -->
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/public.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/style1.css" />
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath }/statics/css/public.css" />
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath }/statics/css/style1.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/statics/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -74,67 +76,74 @@
 							<div class="page-title">
 								<h2>用户设置</h2>
 							</div>
-							<div class="providerAdd" style="border-color: #19b3bd;bacbackground-color:#19b3bd;">
+							<div class="providerAdd"
+								style="border-color: #19b3bd; bacbackground-color: #19b3bd;">
 								<div class="wrapper">
-							   	<!-- Note -->
-							       <div class="nNote nInformation hideit">
-							           <p>${error }</p>
-							       </div>
-							   		<div class="widget" style="height: 100px;">
-							           <div style="position: absolute;left: 190px;top: 100px;">用户头像:</div>
-							 				<img id="uPhoto" style="position: absolute;left: 270px;width:100px;height:100px; top: 115px;" src="${pageContext.request.contextPath}/statics/file/${loginer.userPhoto}" alt="" />
-							  			<label class="providerAddBtn">
-							    			<input type="file" id="photo" name="photo" onchange="upload();" style="left:-999px;position:absolute;">
-							    			<span style="position: absolute;left: 422px;top:190px; background-color:#4ca0cc;color: white;height: 25px;width: 80px;border-radius: 5%;line-height: 25px;text-align: center;">
-							    				上传新头像
-							    			</span>
+									<!-- Note -->
+									<div class="nNote nInformation hideit">
+										<p>${error }</p>
+									</div>
+									<div class="widget" style="height: 100px;">
+										<div style="position: absolute; left: 190px; top: 100px;">用户头像:</div>
+										<img id="uPhoto"
+											style="position: absolute; left: 270px; width: 100px; height: 100px; top: 115px;"
+											src="${pageContext.request.contextPath}/statics/file/${loginer.userPhoto}"
+											alt="" /> <label class="providerAddBtn"> <input
+											type="file" id="photo" name="photo" onchange="upload();"
+											style="left: -999px; position: absolute;"> <span
+											style="position: absolute; left: 422px; top: 190px; background-color: #4ca0cc; color: white; height: 25px; width: 80px; border-radius: 5%; line-height: 25px; text-align: center;">
+												上传新头像 </span>
 										</label>
-							      	</div>
+									</div>
 								</div>
 							</div>
-							<div class="providerAdd" style="border-color: #19b3bd;bacbackground-color:#19b3bd;">
-								<form id="userForm" name="userForm" method="post" 
+							<div class="providerAdd"
+								style="border-color: #19b3bd; bacbackground-color: #19b3bd;">
+								<form id="userForm" name="userForm" method="post"
 									action="${pageContext.request.contextPath}/cserver/alter_user">
 									<!--div的class 为error是验证错误，ok是验证成功-->
-							 
+
 									<div class="info">${information}</div>
 									<div class="">
-										<label for="userId">ID：</label>
-										<input type="text" name="userId" id="userId" 
-										value="${loginer.userId}" readonly="readonly"><font color="#e72c59">&nbsp;&nbsp;*ID不能修改</font>
+										<label for="userId">ID：</label> <input type="text"
+											name="userId" id="userId" value="${loginer.userId}"
+											readonly="readonly"><font color="#e72c59">&nbsp;&nbsp;*ID不能修改</font>
 									</div>
 									<div>
-										<label for="userAlice">用户昵称：</label> 
-										<input type="text" name="userAlice" id="userAlice" 
-										value="${user.userAlice}" required="required"><font color="#e72c59"></font>
+										<label for="userAlice">用户昵称：</label> <input type="text"
+											name="userAlice" id="userAlice" value="${user.userAlice}"
+											required="required"><font color="#e72c59"></font>
 									</div>
 									<div>
-										<label for="userEmail">邮箱：</label> 
-										<input type="email" name="userEmail" id="userEmail"
-										value="${user.userEmail}" required="required"><font color="red"></font>
+										<label for="userEmail">邮箱：</label> <input type="email"
+											name="userEmail" id="userEmail" value="${user.userEmail}"
+											required="required"><font color="red"></font>
 									</div>
 									<div>
-										<label for="userSex">性别：</label> 
+										<label for="userSex">性别：</label>
 										<c:choose>
-											<c:when test="${user.userSex==男}"> 
-												<input type="radio" name="userSex" id="userSex"value="男" checked="checked">男
-												<input type="radio" name="userSex" id="userSex"value="女">女
+											<c:when test="${user.userSex==男}">
+												<input type="radio" name="userSex" id="userSex" value="男"
+													checked="checked">男
+												<input type="radio" name="userSex" id="userSex" value="女">女
 											</c:when>
 											<c:otherwise>
-												<input type="radio" name="userSex" id="userSex"value="男">男
-												<input type="radio" name="userSex" id="userSex"value="女" checked="checked">女
+												<input type="radio" name="userSex" id="userSex" value="男">男
+												<input type="radio" name="userSex" id="userSex" value="女"
+													checked="checked">女
 											</c:otherwise>
 										</c:choose>
 										<font color="red"></font>
 										<div>
-											<label for="userCreateDate">注册日期：</label> 
-											<fmt:formatDate value="${user.userCreateDate}" pattern="yyyy-MM-dd"/>
+											<label for="userCreateDate">注册日期：</label>
+											<fmt:formatDate value="${user.userCreateDate}"
+												pattern="yyyy-MM-dd" />
 										</div>
 									</div>
-										<div class="providerAddBtn">
-											<input type="submit" style="height: 40px; "
-											name="save" id="save" value="保存" class="input-button"> 
-										</div>
+									<div class="providerAddBtn">
+										<input type="submit" style="height: 40px;" name="save"
+											id="save" value="保存" class="input-button">
+									</div>
 								</form>
 							</div>
 						</article>
@@ -150,7 +159,10 @@
 										href="${pageContext.request.contextPath}/cartlist">购物车</a></li>
 									<li class="item odd"><a
 										href="${pageContext.request.contextPath}/clientXF/my_collect">我的收藏</a></li>
-									<li class="item odd"><a href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
+									<li class="item odd"><a
+										href="${pageContext.request.contextPath}/clientXF/my_comment">我的评论</a></li>
+									<li class="item odd"><a
+										href="${pageContext.request.contextPath}/clientXF/goodsadd">添加商品</a></li>
 									<li class="item odd"><a
 										href="${pageContext.request.contextPath}/orderlist">我的订单</a></li>
 									<li class="item odd"><a
@@ -174,7 +186,7 @@
 	<%@ include file="common/mobile_menu.jsp"%>
 
 	<!-- End Footer -->
-	<!-- JavaScript --> 
+	<!-- JavaScript -->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript"
@@ -189,54 +201,55 @@
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/statics/js/jquery.mobile-menu.min.js"></script>
 
-<script type="text/javascript">
-function upload(){
-	var formData = new FormData();
-	formData.append("photo",$("#photo")[0].files[0]);
-	formData.append("userId",$("#userId").val());
-	$.ajax({
-		url:'${pageContext.request.contextPath}/cserver/upload',
-		type:'post',
-		data: formData,
-		contentType: false,
-		processData: false,
-		success:function(result){
-			if(result['status'] == 'success'){
-				$("#uPhoto").attr("src","${pageContext.request.contextPath}/statics/file/"+result['filename']);
-			}
-			else{
-				alert(result['status']);
-			}
-		},
-		error: function(XMLHttpRequest,textStatus,errorThrown) {
-		    alert(errorThrown);
+	<script type="text/javascript">
+		function upload() {
+			var formData = new FormData();
+			formData.append("photo", $("#photo")[0].files[0]);
+			formData.append("userId", $("#userId").val());
+			$.ajax({
+				url : '${pageContext.request.contextPath}/cserver/upload',
+				type : 'post',
+				data : formData,
+				contentType : false,
+				processData : false,
+				success : function(result) {
+					if (result['status'] == 'success') {
+						$("#uPhoto").attr(
+								"src",
+								"${pageContext.request.contextPath}/statics/file/"
+										+ result['filename']);
+					} else {
+						alert(result['status']);
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
 		}
-	});
-}
-//验证用户昵称唯一性
-// 为 id 为 userName 的输入框添加 blur 事件，发送 ajax 请求到控制器
-$("#userAlice").blur(function(){
-	// 获取 goodsName 的值
-	var userAliceVal = $(this).val();
-	// 发送异步请求，把获取的值传递到控制器
-	$.ajax({
-		   type: "POST",
-		   url: "${pageContext.request.contextPath}/cserver/ucexist",
-		   data: "userAlice="+userAliceVal,
-		   success:function(msg){
-			   
-			   if(msg.userAlice =='exist'){
-				   $("#userAlice").next().html("&nbsp;&nbsp*用户昵称已存在");
-			   }
-			   else{
-				   $("#userAlice").next().html("&nbsp;&nbsp*用户昵称可以使用");
-			   }
-		   },
-		   error:function (XMLHttpRequest, textStatus, errorThrown) {
-			    alert("异常：" +textStatus+errorThrown);
-		   }
-	});
-});
-</script>
+		//验证用户昵称唯一性
+		// 为 id 为 userName 的输入框添加 blur 事件，发送 ajax 请求到控制器
+		$("#userAlice").blur(function() {
+			// 获取 goodsName 的值
+			var userAliceVal = $(this).val();
+			// 发送异步请求，把获取的值传递到控制器
+			$.ajax({
+				type : "POST",
+				url : "${pageContext.request.contextPath}/cserver/ucexist",
+				data : "userAlice=" + userAliceVal,
+				success : function(msg) {
+
+					if (msg.userAlice == 'exist') {
+						$("#userAlice").next().html("&nbsp;&nbsp*用户昵称已存在");
+					} else {
+						$("#userAlice").next().html("&nbsp;&nbsp*用户昵称可以使用");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("异常：" + textStatus + errorThrown);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
